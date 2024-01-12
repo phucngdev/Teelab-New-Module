@@ -7,8 +7,6 @@ import Table_size from "./pages/user/page/Table_size.jsx";
 import Check_order from "./pages/user/page/Check_order.jsx";
 import ListProduct from "./pages/user/product/List_product.jsx";
 import Ao_thun from "./pages/user/product/ao_thun.jsx";
-import Baby_tee from "./pages/user/product/baby_tee.jsx";
-import Ao_polo from "./pages/user/product/ao_polo.jsx";
 import Item from "./components/item.jsx";
 import HomeAdmin from "./pages/private/pageAdmin/home.jsx";
 // admin remove
@@ -31,8 +29,6 @@ function App() {
         <Route path="/he-thong-cua-hang" element={<Shop_system />}></Route>
         <Route path="/tat-ca-san-pham" element={<ListProduct />}></Route>
         <Route path="/ao-thun" element={<Ao_thun />}></Route>
-        <Route path="/baby-tee" element={<Baby_tee />}></Route>
-        <Route path="/ao-polo" element={<Ao_polo />}></Route>
         <Route path="/kiem-tra-don-hang" element={<Check_order />}></Route>
         <Route path="/admin" element={<HomeAdmin />}></Route>
         <Route path="/:id" element={<Item />}></Route>

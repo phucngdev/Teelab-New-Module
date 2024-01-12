@@ -1,24 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon_addcart from "/public/icon-product/icon_addcart.svg";
-import axios from "axios";
 
-const List_item = () => {
+const List_item = (data) => {
   const [selectedIcon, setSelectedIcon] = useState();
   const [selectedItemId, setSelectedItemId] = useState();
-  const [fakeApi, setFakeApi] = useState([]);
-
-  // gọi api bằng axios
-  const loadData = () => {
-    axios
-      .get("http://localhost:8080/tlat")
-      .then((response) => setFakeApi(response.data))
-      .catch((error) => console.log(error));
-  };
-
-  useEffect(() => {
-    loadData();
-  }, []);
 
   // thay đổi active của product
   const handleRadioChange = (e, itemId) => {
@@ -30,7 +16,7 @@ const List_item = () => {
 
   return (
     <div className="grid grid-cols-2 gap-x-5 gap-y-7 xl:grid-cols-4 md:grid-cols-3">
-      {fakeApi.map((item, index) => (
+      {data.map((item, index) => (
         <form
           key={index}
           className="grid-item flex flex-col items-center relative hover:cursor-pointer "

@@ -64,7 +64,7 @@ export const listMenu = menuItem.map((item, index) => (
 ));
 
 const Header = () => {
-  const [searchText, setSearcText] = useState("");
+  const [searchText, setSearcText] = useState([]);
   const [products, setProducts] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -72,22 +72,23 @@ const Header = () => {
   const handleShow = () => setShowMenu(true);
 
   // sửa phần này
-  const loadData = async () => {
-    await axios
-      .get(`http://localhost:8000/tlat?&name_like=${searchText}`)
-      .then((response) => {
-        setProducts(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  // const loadData = async () => {
+  //   await axios
+  //     .get(`http://localhost:8000/tlat`)
+  //     .then((response) => {
+  //       setProducts(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
+  // console.log(searchText);
 
-  useEffect(() => {
-    const delaySearch = debounce(loadData, 500);
-    delaySearch();
-    return delaySearch.cancel;
-  }, [searchText]);
+  // useEffect(() => {
+  //   const delaySearch = debounce(loadData, 500);
+  //   delaySearch();
+  //   return delaySearch.cancel;
+  // }, [searchText]);
 
   return (
     <header className="header w-full">
@@ -95,8 +96,8 @@ const Header = () => {
         <div className="container mx-auto flex justify-end">
           <form className="relative h-10 flex items-center">
             <input
-              value={searchText}
-              onChange={(e) => setSearcText(e.target.value)}
+              // value={searchText}
+              // onChange={(e) => setSearcText(e.target.value)}
               id="input_search"
               type="search"
               className="border border-solid border-gray-400 border-r-0 h-full px-3 rounded-l-md"
@@ -108,7 +109,7 @@ const Header = () => {
             >
               <img src={Icon_search} alt="" />
             </button>
-            <div className="w-[200px] h-10 bg-black absolute top-[100%]"></div>
+            {/* <div className="w-[200px] h-10 bg-black absolute top-[100%]"></div> */}
           </form>
           <div className="h-full w-11 ms-2 relative">
             <div className="cart">

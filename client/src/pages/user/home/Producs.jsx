@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { TLAT } from "../../../data/TLAT";
 import List_item from "../../../components/List_item";
-
-const dataAT_mb = TLAT.slice(0, 2);
+import loadData from "../../../api/CallApi";
 
 const Producs = () => {
+  const [fakeApi, setFakeApi] = useState([]);
+  loadData("ao-thun", setFakeApi);
   return (
     <>
       <div className="container mx-auto mb-[50px]">
@@ -17,7 +17,7 @@ const Producs = () => {
             <Link to="/ao-thun">Xem thêm</Link>
           </h4>
         </div>
-        <div className="">{List_item(TLAT)}</div>
+        <div className="">{List_item(fakeApi)}</div>
         <Link
           to="/ao-thun"
           className="block text-center text-base text-[#333] underline decoration-1 mt-4 lg:hidden"
