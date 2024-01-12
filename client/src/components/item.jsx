@@ -13,9 +13,20 @@ const Item = () => {
   const [selectedIcon, setSelectedIcon] = useState("");
   const [selectedItemIcon, setSelectedItemIcon] = useState("");
 
-  // lấy id product và render api
+  // lấy id fakeApi[0] và render api
   const { id } = useParams();
-  const product = fakeApi.find((p) => p.id == id);
+
+  // gọi api bằng axios
+  const loadData = async () => {
+    await axios
+      .get(`http://localhost:8080/ao-thun?id=${id}`)
+      .then((response) => setFakeApi(response.data))
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    loadData();
+  }, []);
 
   // thuộc tính của slide
   const properties = {
@@ -25,19 +36,6 @@ const Item = () => {
     easing: "ease",
     autoplay: false,
   };
-
-  // gọi api bằng axios
-  const loadData = async () => {
-    await axios
-      .get(`http://localhost:8080/tlat?id=${id}`)
-      .then((response) => setFakeApi(response.data))
-      .catch((error) => console.log(error));
-  };
-  console.log(fakeApi);
-
-  useEffect(() => {
-    loadData();
-  }, []);
 
   // lấy name của img icon -- lable
   const handleRadioChange = (e, itemId) => {
@@ -65,18 +63,18 @@ const Item = () => {
   };
 
   return (
-    product && (
+    fakeApi[0] && (
       <>
         <Header></Header>
         <Helmet>
-          <title>{product.name}</title>
+          <title>{fakeApi[0].name}</title>
         </Helmet>
         <div className="item mt-[56px] mb-[30px] md:mt-[30px]">
           <div className="container mx-auto">
             <div className="flex flex-col md:flex-row sm:justify-between sm:flex-wrap">
               <div className="w-full lg:w-[60%] flex-grow-0 flex-shrink-0 px-[15px]">
                 <Slide {...properties}>
-                  {product.imgItem.map((img, index) => (
+                  {fakeApi[0].imgItem.map((img, index) => (
                     <div
                       key={index}
                       className="h-[360px] md:h lg:h-[500px] flex justify-center items-center"
@@ -92,36 +90,38 @@ const Item = () => {
               </div>
               <div className="w-full lg:w-[40%] flex-grow-0 flex-shrink-0 px-[15px]">
                 <h1 className="text-[22px] text-[#333] font-sans leading-8 mb-[10px] pb-[10px] border-b-2 border-solid border-[#000]">
-                  {product.name}
+                  {fakeApi[0].name}
                 </h1>
                 <div className="flex items-center gap-3">
                   <span className="text-[30px] text-[#f81f1f] font-sans ">
-                    {product.price}
+                    {fakeApi[0].price}
                   </span>
                   <span className="text-xl text-[#949494] line-through">
-                    {product.priceBefore}
+                    {fakeApi[0].priceBefore}
                   </span>
                 </div>
                 <form action="">
                   <div className="flex items-center gap-2 mb-2">
                     <span>Màu sắc:</span>
                     <span>
-                      {selectedItemIcon === product.id
+                      {selectedItemIcon === fakeApi[0].id
                         ? selectedIcon
-                        : product.imgIcon[0].iconName}
+                        : fakeApi[0].imgIcon[0].iconName}
                     </span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="flex justify-center items-center gap-[10px] mb-[10px]">
-                      {product.imgIcon.map((icon, iconIndex) => (
+                      {fakeApi[0].imgIcon.map((icon, iconIndex) => (
                         <div key={iconIndex} className="relative w-8 h-8">
                           <input
-                            name={product.name}
+                            name={fakeApi[0].name}
                             id={icon.icon}
                             type="radio"
                             className="w-full h-full absolute z-10"
                             checked={icon.iconName === selectedIcon}
-                            onChange={(e) => handleRadioChange(e, product.id)}
+                            onChange={(e) =>
+                              handleRadioChange(e, fakeApi[0].id)
+                            }
                             value={icon.iconName}
                           />
                           <label
@@ -141,23 +141,23 @@ const Item = () => {
                   <div className="flex items-center gap-2 mb-2">
                     <span>Kích thước:</span>
                     <span>
-                      {selectedItemSize === product.id
+                      {selectedItemSize === fakeApi[0].id
                         ? selectedSize
-                        : product.size[0].sizeItem}
+                        : fakeApi[0].size[0].sizeItem}
                     </span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="flex justify-center items-center gap-[10px] mb-[10px]">
-                      {product.size.map((size, sizeIndex) => (
+                      {fakeApi[0].size.map((size, sizeIndex) => (
                         <div key={sizeIndex} className="relative w-8 h-8">
                           <input
-                            name={product.id}
+                            name={fakeApi[0].id}
                             id={size.sizeItem}
                             type="radio"
                             className="w-full h-full absolute z-10"
                             checked={size.sizeItem === selectedSize}
                             onChange={(e) =>
-                              handleRadioChangeSize(e, product.id)
+                              handleRadioChangeSize(e, fakeApi[0].id)
                             }
                             value={size.sizeItem}
                           />
@@ -204,7 +204,7 @@ const Item = () => {
                       </button>
                     </div>
                     <span>
-                      {product.quantity > 0 ? "Còn hàng" : "Hết hàng"}
+                      {fakeApi[0].quantity > 0 ? "Còn hàng" : "Hết hàng"}
                     </span>
                   </div>
                   <button
@@ -224,11 +224,12 @@ const Item = () => {
                     Thông tin sản phẩm
                   </p>
                   <p className="text-[#333] text-sm leading-6">
-                    {/* in chất liệu */}- Chất liệu: {product.material} <br />
-                    {/* in form */}- form: {product.form} <br />
-                    {/* in thiết kế */}- Thiết kế: {product.design}
+                    {/* in chất liệu */}- Chất liệu: {fakeApi[0].material}{" "}
+                    <br />
+                    {/* in form */}- form: {fakeApi[0].form} <br />
+                    {/* in thiết kế */}- Thiết kế: {fakeApi[0].design}
                     <img
-                      src={product.imgInDetail}
+                      src={fakeApi[0].imgInDetail}
                       alt=""
                       className="h-full w-[790px] my-1 border-x-[1px] border-solid border-[#b9b9b9]"
                     />
