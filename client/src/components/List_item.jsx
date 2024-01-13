@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon_addcart from "/public/icon-product/icon_addcart.svg";
 
 const List_item = (data) => {
   const [selectedIcon, setSelectedIcon] = useState();
   const [selectedItemId, setSelectedItemId] = useState();
+  const [cart, setCart] = useState([]);
 
   // thay đổi active của product
   const handleRadioChange = (e, itemId) => {
@@ -12,7 +13,16 @@ const List_item = (data) => {
     setSelectedIcon(e.target.value);
   };
 
+  // điều hướng trang đến /id
   const navigate = useNavigate();
+
+  // click add to cart bằng icon
+  const handleAdd = (item) => {
+    setCart([...cart, item]);
+  };
+  useEffect(() => {
+    console.log("cart: ", cart);
+  }, [cart]);
 
   return (
     <div className="grid grid-cols-2 gap-x-5 gap-y-7 xl:grid-cols-4 md:grid-cols-3">
@@ -30,7 +40,6 @@ const List_item = (data) => {
           </div>
           <div className="imgHover opacity-[0.01] transition-opacity duration-500 absolute z-50 top-0 left-0 hover:opacity-100">
             <button
-              // to="/item"
               onClick={() => navigate(`/${item.id}`)}
               className="w-full h-full "
             >
@@ -44,10 +53,14 @@ const List_item = (data) => {
           <div className="w-[46px] h-[18px] bg-[#d52220] absolute top-[15px] left-[15px] text-center text-xs text-white">
             {item.sale}
           </div>
-          <div className="icon-addcart absolute top-[10px] right-[15px] z-50 hidden animate-bounce">
+          <div
+            onClick={() => handleAdd(item)}
+            className="icon-addcart absolute top-[10px] right-[15px] z-50 hidden animate-bounce"
+          >
             <button
               className="btn-addcart w-[35px] h-[35px] border-0 shadow-none bg-[#696969] rounded-[50%] flex justify-center items-center"
               title="Thêm vào giỏ hàng"
+              type="button"
             >
               <img src={Icon_addcart} alt="" />
             </button>
@@ -60,14 +73,14 @@ const List_item = (data) => {
                     name={item.name}
                     id={icon.icon}
                     type="radio"
-                    className="w-full h-full absolute z-10"
+                    className="w-full h-full absolute z-10 "
                     checked={icon.icon === selectedIcon}
                     onChange={(e) => handleRadioChange(e, item.id)}
                     value={icon.icon}
                   />
                   <label
                     htmlFor={icon.icon}
-                    className="w-full h-full absolute z-20"
+                    className="w-full h-full absolute z-20 rounded-full border-[1px] border-red-500 cursor-pointer"
                   >
                     <img
                       className="w-7 h-7 rounded-[100%] object-cover absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
