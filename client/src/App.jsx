@@ -12,6 +12,7 @@ import HomeAdmin from "./pages/private/pageAdmin/home.jsx";
 // admin remove
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Pay from "./pages/user/page/Pay.jsx";
 
 function App() {
   const location = useLocation();
@@ -31,6 +32,7 @@ function App() {
         <Route path="/ao-thun" element={<Ao_thun />}></Route>
         <Route path="/kiem-tra-don-hang" element={<Check_order />}></Route>
         <Route path="/admin" element={<HomeAdmin />}></Route>
+        <Route path="/pay" element={<Pay />}></Route>
         <Route path="/:id" element={<Item />}></Route>
       </Routes>
     </div>

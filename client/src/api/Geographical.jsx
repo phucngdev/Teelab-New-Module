@@ -1,0 +1,104 @@
+import React, { useState, useEffect } from "react";
+import Select from "react-select";
+import axios from "axios";
+
+const CitySelector = () => {
+  const [provinces, setProvinces] = useState([]);
+  const [districts, setDistricts] = useState([]);
+  const [communes, setCommunes] = useState([]);
+  const [selectedProvince, setSelectedProvince] = useState("");
+  const [selectedDistrict, setSelectedDistrict] = useState("");
+  const [selectedCommune, setSelectedCommune] = useState("");
+
+  const addressApi = () => {
+    axios
+      .get(
+        "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json"
+      )
+      .then((response) => setProvinces(response.data))
+      .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    addressApi();
+  }, []);
+
+  useEffect(() => {
+    if (selectedProvince) {
+      const selectedProvinceData = provinces.find(
+        (province) => province.Id === selectedProvince
+      );
+      setDistricts(selectedProvinceData?.Districts || []);
+      setCommunes([]);
+      setSelectedDistrict("");
+      setSelectedCommune("");
+    }
+  }, [selectedProvince, provinces]);
+
+  useEffect(() => {
+    if (selectedDistrict) {
+      const selectedDistrictData = districts.find(
+        (district) => district.Id === selectedDistrict
+      );
+      setCommunes(selectedDistrictData?.Wards || []);
+      setSelectedCommune("");
+    }
+  }, [selectedDistrict, districts]);
+
+  const provinceOptions = provinces.map((province) => ({
+    value: province.Id,
+    label: province.Name,
+  }));
+
+  const districtOptions = districts.map((district) => ({
+    value: district.Id,
+    label: district.Name,
+  }));
+
+  const communeOptions = communes.map((commune) => ({
+    value: commune.Id,
+    label: commune.Name,
+  }));
+
+  const handleProvinceChange = (selectedOption) => {
+    setSelectedProvince(selectedOption.value);
+    setSelectedDistrict("");
+    setSelectedCommune("");
+  };
+
+  const handleDistrictChange = (selectedOption) => {
+    setSelectedDistrict(selectedOption.value);
+    setSelectedCommune("");
+  };
+
+  const handleCommuneChange = (selectedOption) => {
+    setSelectedCommune(selectedOption.value);
+  };
+
+  return (
+    <div className="flex flex-col relative z-[99]">
+      <Select
+        className="mb-2"
+        value={provinceOptions.find((option) => option.Id === selectedProvince)}
+        placeholder="Chọn tỉnh thành"
+        onChange={handleProvinceChange}
+        options={provinceOptions}
+      />
+      <Select
+        className="mb-2"
+        value={districtOptions.find((option) => option.Id === selectedDistrict)}
+        placeholder="Chọn quận huyện"
+        onChange={handleDistrictChange}
+        options={districtOptions}
+      />
+      <Select
+        className="mb-2"
+        value={communeOptions.find((option) => option.Id === selectedCommune)}
+        placeholder="Chọn phường xã"
+        onChange={handleCommuneChange}
+        options={communeOptions}
+      />
+    </div>
+  );
+};
+
+export default CitySelector;
