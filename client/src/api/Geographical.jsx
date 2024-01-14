@@ -59,6 +59,7 @@ const CitySelector = () => {
     label: commune.Name,
   }));
 
+  // các function handle ko chạy khi thay đổi option
   const handleProvinceChange = (selectedOption) => {
     setSelectedProvince(selectedOption.value);
     setSelectedDistrict("");
