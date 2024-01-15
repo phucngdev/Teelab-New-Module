@@ -65,7 +65,6 @@ export const listMenu = menuItem.map((item, index) => (
 
 const Header = () => {
   const [searchText, setSearcText] = useState([]);
-  const [products, setProducts] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
 
   const handleClose = () => setShowMenu(false);
@@ -81,7 +80,6 @@ const Header = () => {
         console.log(error);
       });
   };
-  console.log(searchText);
 
   useEffect(() => {
     loadDataSearch();
