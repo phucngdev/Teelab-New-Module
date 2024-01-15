@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import Icon_search from "/icon-header/icon-search.svg";
 import Icon_cart from "/icon-header/icon-cart.svg";
 import Icon_Incart from "/icon-header/icon_incart.svg";
 import logo from "/logo.png";
 import axios from "axios";
-import debounce from "lodash.debounce";
+import Select from "react-select";
+import { useNavigate } from "react-router-dom";
 
 export const menuItem = [
   {
@@ -71,45 +71,52 @@ const Header = () => {
   const handleClose = () => setShowMenu(false);
   const handleShow = () => setShowMenu(true);
 
-  // sửa phần này
-  // const loadData = async () => {
-  //   await axios
-  //     .get(`http://localhost:8000/tlat`)
-  //     .then((response) => {
-  //       setProducts(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
-  // console.log(searchText);
+  const loadDataSearch = () => {
+    axios
+      .get(`http://localhost:8080/tat-ca-san-pham`)
+      .then((response) => {
+        setSearcText(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  console.log(searchText);
 
-  // useEffect(() => {
-  //   const delaySearch = debounce(loadData, 500);
-  //   delaySearch();
-  //   return delaySearch.cancel;
-  // }, [searchText]);
+  useEffect(() => {
+    loadDataSearch();
+  }, []);
+
+  const navigate = useNavigate();
+
+  const searchOption = searchText.map((province) => ({
+    value: province.id,
+    label: province.name,
+    imgSrc: province.img,
+  }));
+
+  const formatOptionLabel = ({ value, label, imgSrc }) => (
+    <div
+      className="flex items-center gap-3"
+      onClick={() => navigate(`/${value}`)}
+    >
+      <img src={imgSrc} alt={label} className="w-10 " />
+      {label}
+    </div>
+  );
 
   return (
     <header className="header w-full">
       <div className="hidden md:block w-full py-[5px] bg-[#f5f5f5]">
         <div className="container mx-auto flex justify-end">
           <form className="relative h-10 flex items-center">
-            <input
-              // value={searchText}
-              // onChange={(e) => setSearcText(e.target.value)}
-              id="input_search"
-              type="search"
-              className="border border-solid border-gray-400 border-r-0 h-full px-3 rounded-l-md"
-              placeholder="Tìm kiếm sản phẩm"
+            <Select
+              className="w-[400px]"
+              value={searchOption.find((option) => option.name === searchText)}
+              placeholder="Tìm kiếm"
+              options={searchOption}
+              formatOptionLabel={formatOptionLabel}
             />
-            <button
-              type="button"
-              className="w-[45px] h-[40px] bg-[#545457] flex justify-center items-center rounded-md"
-            >
-              <img src={Icon_search} alt="" />
-            </button>
-            {/* <div className="w-[200px] h-10 bg-black absolute top-[100%]"></div> */}
           </form>
           <div className="h-full w-11 ms-2 relative">
             <div className="cart">
