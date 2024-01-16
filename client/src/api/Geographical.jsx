@@ -24,15 +24,17 @@ const CitySelector = () => {
 
   useEffect(() => {
     if (selectedProvince) {
+      console.log(selectedProvince);
       const selectedProvinceData = provinces.find(
         (province) => province.Id === selectedProvince
       );
+      console.log(selectedProvinceData);
       setDistricts(selectedProvinceData?.Districts || []);
       setCommunes([]);
       setSelectedDistrict("");
       setSelectedCommune("");
     }
-  }, [selectedProvince, provinces]);
+  }, [selectedProvince]);
 
   useEffect(() => {
     if (selectedDistrict) {
@@ -42,7 +44,7 @@ const CitySelector = () => {
       setCommunes(selectedDistrictData?.Wards || []);
       setSelectedCommune("");
     }
-  }, [selectedDistrict, districts]);
+  }, [selectedDistrict]);
 
   const provinceOptions = provinces.map((province) => ({
     value: province.Id,

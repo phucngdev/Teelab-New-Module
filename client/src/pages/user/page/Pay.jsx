@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "/logo.png";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { Helmet } from "react-helmet";
 import Form from "react-bootstrap/Form";
@@ -11,6 +10,7 @@ import {
   faMoneyBillAlt,
   faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
+import Header from "../../../components/pay/Header";
 
 const Pay = () => {
   return (
@@ -18,13 +18,9 @@ const Pay = () => {
       <Helmet>
         <title>TEELAB - Thanh toán</title>
       </Helmet>
-      <form className="flex flex-col lg:flex-row h-[100dvh]">
-        <main className="lg:w-[65%] ps-[7%] p-[28px]">
-          <header className="w-full flex justify-center items-center mb-6">
-            <Link to="/">
-              <img src={logo} alt="" />
-            </Link>
-          </header>
+      <Header></Header>
+      <form className="container flex flex-col lg:flex-row h-[100dvh]">
+        <main className="lg:w-[65%] ps-0 p-[28px]">
           <div className="flex flex-col lg:flex-row justify-between gap-[28px] ">
             <div className="lg:w-[50%]">
               <h3 className="font-semibold text-xl mb-2">
@@ -70,7 +66,7 @@ const Pay = () => {
             </div>
           </div>
         </main>
-        <aside className="flex-1 bg-[#fafafa] pe-[7%] p-[28px] border-l border-gray-300">
+        <aside className="flex-1 bg-[#fafafa] pe-0 p-[28px] border-l border-gray-300">
           <h3 className="font-semibold text-xl mb-2">Đơn hàng (2 sản phẩm)</h3>
           <div className="border border-gray-500 rounded-lg p-2 flex gap-3 items-center justify-between">
             <img
@@ -139,7 +135,7 @@ const Pay = () => {
             <p className="font-bold text-xl">390.000đ</p>
           </div>
           <div className="flex gap-3 justify-between items-center mt-3 pt-3 border-t-[1px] border-gray-300">
-            <Link to="" className="text-base flex gap-1 items-center">
+            <Link to="/gio-hang" className="text-base flex gap-1 items-center">
               <FontAwesomeIcon icon={faArrowLeft} />
               Quay về giỏ hàng
             </Link>

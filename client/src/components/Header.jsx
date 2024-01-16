@@ -118,7 +118,7 @@ const Header = () => {
           </form>
           <div className="h-full w-11 ms-2 relative">
             <div className="cart">
-              <Link to="" className="">
+              <Link to="/gio-hang" className="">
                 <div className="w-5 h-5 flex items-center justify-center text-white bg-[#d64646] rounded-[100rem] absolute right-0">
                   0
                 </div>

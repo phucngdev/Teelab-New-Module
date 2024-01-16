@@ -119,9 +119,6 @@ const Footer = () => {
             </h4>
             <ul className="grid grid-cols-3 items-center text-center gap-2 md:block">
               {listAbout}
-              <li>
-                <Link to="/admin">admin</Link>
-              </li>
             </ul>
           </div>
         </div>

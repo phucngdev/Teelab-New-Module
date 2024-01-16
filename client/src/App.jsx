@@ -13,6 +13,7 @@ import HomeAdmin from "./pages/private/pageAdmin/home.jsx";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Pay from "./pages/user/page/Pay.jsx";
+import Cart from "./pages/user/page/Cart.jsx";
 
 function App() {
   const location = useLocation();
@@ -31,9 +32,10 @@ function App() {
         <Route path="/tat-ca-san-pham" element={<ListProduct />}></Route>
         <Route path="/ao-thun" element={<Ao_thun />}></Route>
         <Route path="/kiem-tra-don-hang" element={<Check_order />}></Route>
-        <Route path="/admin" element={<HomeAdmin />}></Route>
-        <Route path="/pay" element={<Pay />}></Route>
+        <Route path="/gio-hang" element={<Cart />}></Route>
+        <Route path="/thanh-toan" element={<Pay />}></Route>
         <Route path="/:id" element={<Item />}></Route>
+        <Route path="/admin/tong-quan" element={<HomeAdmin />}></Route>
       </Routes>
     </div>
   );
