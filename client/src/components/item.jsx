@@ -225,6 +225,14 @@ const Item = () => {
                   </p>
                   <p className="text-[#333] text-sm leading-6">
                     {/* in chất liệu */}- Chất liệu: {fakeApi[0].material}{" "}
+                    <br />- Màu sắc:{" "}
+                    {fakeApi[0].imgIcon
+                      .map((color) => {
+                        return `
+                        ${color.iconName}
+                        `;
+                      })
+                      .join("/")}{" "}
                     <br />
                     {/* in form */}- form: {fakeApi[0].form} <br />
                     {/* in thiết kế */}- Thiết kế: {fakeApi[0].design}
