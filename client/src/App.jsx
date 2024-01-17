@@ -9,11 +9,11 @@ import ListProduct from "./pages/user/product/List_product.jsx";
 import Ao_thun from "./pages/user/product/ao_thun.jsx";
 import Item from "./components/item.jsx";
 import HomeAdmin from "./pages/private/pageAdmin/home.jsx";
-// admin remove
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Pay from "./pages/user/page/Pay.jsx";
 import Cart from "./pages/user/page/Cart.jsx";
+import ProductsAdmin from "./pages/private/pageAdmin/products.jsx";
 
 function App() {
   const location = useLocation();
@@ -36,6 +36,10 @@ function App() {
         <Route path="/thanh-toan" element={<Pay />}></Route>
         <Route path="/:id" element={<Item />}></Route>
         <Route path="/admin/tong-quan" element={<HomeAdmin />}></Route>
+        <Route
+          path="/admin/tat-ca-san-pham"
+          element={<ProductsAdmin />}
+        ></Route>
       </Routes>
     </div>
   );

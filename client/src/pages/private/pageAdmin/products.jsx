@@ -2,15 +2,15 @@ import React from "react";
 import Sidebar from "../../../components/admin/Sidebar";
 import { Helmet } from "react-helmet";
 
-const HomeAdmin = () => {
+const ProductsAdmin = () => {
   return (
     <>
       <Helmet>
-        <title>TEELAB -Tổng quan</title>
+        <title>TEELAB - Tất cả sản phẩm</title>
       </Helmet>
       <Sidebar></Sidebar>
     </>
   );
 };
 
-export default HomeAdmin;
+export default ProductsAdmin;
