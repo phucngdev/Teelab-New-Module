@@ -8,12 +8,12 @@ import Check_order from "./pages/user/page/Check_order.jsx";
 import ListProduct from "./pages/user/product/List_product.jsx";
 import Ao_thun from "./pages/user/product/ao_thun.jsx";
 import Item from "./components/item.jsx";
-import HomeAdmin from "./pages/private/pageAdmin/home.jsx";
+import HomeAdmin from "./pages/private/home.jsx";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Pay from "./pages/user/page/Pay.jsx";
 import Cart from "./pages/user/page/Cart.jsx";
-import ProductsAdmin from "./pages/private/pageAdmin/products.jsx";
+import ProductsAdmin from "./pages/private/products.jsx";
 
 function App() {
   const location = useLocation();

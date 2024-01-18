@@ -174,8 +174,8 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="w-[320px] h-[100vh] bg-white fixed left-0 top-0 border-e  border-[#ccc]">
-        <div className="flex justify-center mt-[38px]">
+      <div className="w-[320px] h-[100vh] bg-white border-e border-[#ccc]">
+        <div className="flex justify-center mt-[30px]">
           <NavLink to="/admin/tong-quan">
             <img src={logo} alt="" />
           </NavLink>

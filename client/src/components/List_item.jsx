@@ -5,7 +5,6 @@ import Icon_addcart from "/public/icon-product/icon_addcart.svg";
 const List_item = (data) => {
   const [selectedIcon, setSelectedIcon] = useState();
   const [selectedItemId, setSelectedItemId] = useState();
-  const [cart, setCart] = useState([]);
 
   // thay đổi active của product
   const handleRadioChange = (e, itemId) => {
@@ -15,14 +14,6 @@ const List_item = (data) => {
 
   // điều hướng trang đến /id
   const navigate = useNavigate();
-
-  // click add to cart bằng icon
-  const handleAdd = (item) => {
-    setCart([...cart, item]);
-  };
-  useEffect(() => {
-    console.log("cart: ", cart);
-  }, [cart]);
 
   return (
     <div className="grid grid-cols-2 gap-x-5 gap-y-7 xl:grid-cols-4 md:grid-cols-3">
@@ -53,10 +44,7 @@ const List_item = (data) => {
           <div className="w-[46px] h-[18px] bg-[#d52220] absolute top-[15px] left-[15px] text-center text-xs text-white">
             {item.sale}
           </div>
-          <div
-            onClick={() => handleAdd(item)}
-            className="icon-addcart absolute top-[10px] right-[15px] z-50 hidden animate-bounce"
-          >
+          <div className="icon-addcart absolute top-[10px] right-[15px] z-50 hidden animate-bounce">
             <button
               className="btn-addcart w-[35px] h-[35px] border-0 shadow-none bg-[#696969] rounded-[50%] flex justify-center items-center"
               title="Thêm vào giỏ hàng"

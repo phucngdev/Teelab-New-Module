@@ -1,16 +1,15 @@
 import React from "react";
-import Sidebar from "../../../components/admin/Sidebar";
-import { Helmet } from "react-helmet";
 
-const HomeAdmin = () => {
+const Home = () => {
   return (
     <>
-      <Helmet>
-        <title>TEELAB -Tổng quan</title>
-      </Helmet>
-      <Sidebar></Sidebar>
+      <div className="flex-1 p-[30px]">
+        <header className="flex justify-between items-center">
+          <div className="flex"></div>
+        </header>
+      </div>
     </>
   );
 };
 
-export default HomeAdmin;
+export default Home;
