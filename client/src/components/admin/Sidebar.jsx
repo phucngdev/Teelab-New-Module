@@ -22,15 +22,15 @@ const Sidebar = () => {
   const [displayIndex, setDisplayIndex] = useState(false);
   const location = useLocation();
 
-  const listActive = [
-    "/admin/tong-quan",
-    "/admin/bao-cao",
-    "/admin/quan-ly-tai-khoan",
-    "/admin/khuyen-mai",
-    "/admin/tat-ca-don-hang",
-    "/admin/don-huy",
-    "/admin/don-tra-hang",
-  ];
+  // const listActive = [
+  //   "/admin/tong-quan",
+  //   "/admin/bao-cao",
+  //   "/admin/quan-ly-tai-khoan",
+  //   "/admin/khuyen-mai",
+  //   "/admin/tat-ca-don-hang",
+  //   "/admin/don-huy",
+  //   "/admin/don-tra-hang",
+  // ];
 
   const handleDisplay = (index) => {
     setDisplayIndex((pathIndex) => (pathIndex === index ? false : index));
