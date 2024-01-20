@@ -104,7 +104,7 @@ const Header = () => {
   );
 
   return (
-    <header className="header w-full">
+    <header className="header w-full ">
       <div className="hidden md:block w-full py-[5px] bg-[#f5f5f5]">
         <div className="container mx-auto flex justify-end">
           <form className="relative h-10 flex items-center">

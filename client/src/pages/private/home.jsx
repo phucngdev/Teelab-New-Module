@@ -9,10 +9,8 @@ const HomeAdmin = () => {
       <Helmet>
         <title>TEELAB -Tổng quan</title>
       </Helmet>
-      <div className="flex">
-        <Sidebar></Sidebar>
-        <Home></Home>
-      </div>
+      <Sidebar></Sidebar>
+      <Home></Home>
     </>
   );
 };

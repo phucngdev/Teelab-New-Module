@@ -5,11 +5,23 @@ import Icon_addcart from "/public/icon-product/icon_addcart.svg";
 const List_item = (data) => {
   const [selectedIcon, setSelectedIcon] = useState();
   const [selectedItemId, setSelectedItemId] = useState();
+  const [cartLocal, setcartLocal] = useState(() => {
+    const carts = JSON.parse(localStorage.getItem("listcart")) || [];
+    return carts;
+  });
 
   // thay đổi active của product
   const handleRadioChange = (e, itemId) => {
     setSelectedItemId(itemId);
     setSelectedIcon(e.target.value);
+  };
+
+  // hàm click icon add
+  const handleAddCart = (item) => {
+    const newListCart = [...cartLocal, item];
+    setcartLocal(newListCart);
+    localStorage.setItem("listcart", JSON.stringify(newListCart));
+    console.log(newListCart);
   };
 
   // điều hướng trang đến /id
@@ -49,6 +61,7 @@ const List_item = (data) => {
               className="btn-addcart w-[35px] h-[35px] border-0 shadow-none bg-[#696969] rounded-[50%] flex justify-center items-center"
               title="Thêm vào giỏ hàng"
               type="button"
+              onClick={() => handleAddCart(item)}
             >
               <img src={Icon_addcart} alt="" />
             </button>

@@ -37,7 +37,7 @@ function App() {
         <Route path="/:id" element={<Item />}></Route>
         <Route path="/admin/tong-quan" element={<HomeAdmin />}></Route>
         <Route
-          path="/admin/tat-ca-san-pham"
+          path="/admin/san-pham/tat-ca-san-pham"
           element={<ProductsAdmin />}
         ></Route>
       </Routes>

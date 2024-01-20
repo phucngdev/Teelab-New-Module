@@ -3,14 +3,49 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSignOutAlt,
   faEnvelopeOpen,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { Tooltip } from "antd";
 
 const Header = () => {
+  const listPath = [
+    { path: "/admin/tong-quan", text: "Tổng quan" },
+    { path: "/admin/bao-cao", text: "Báo cáo" },
+    { path: "/admin/quan-ly-tai-khoan", text: "Quản lý tài khoản" },
+    { path: "/admin/khuyen-mai", text: "Khuyến mãi" },
+    {
+      path: "/admin/don-hang/tat-ca-don-hang",
+      text: "Đơn hàng - Tất cả sản phẩm",
+    },
+    { path: "/admin/don-hang/don-bi-huy", text: "Đơn hàng - Đơn bị huỷ" },
+    { path: "/admin/don-hang/don-bi-tra", text: "Đơn hàng - Đơn bị trả" },
+    {
+      path: "/admin/san-pham/tat-ca-san-pham",
+      text: "Sản phẩm - Tất cả sản phẩm",
+    },
+    {
+      path: "/admin/san-pham/kiem-hang",
+      text: "Sản phẩm - Kiểm hàng",
+    },
+    {
+      path: "/admin/san-pham/san-pham-het-hang",
+      text: "Sản phẩm - Sản phẩm hết hàng",
+    },
+  ];
+
+  const routePage = listPath.find((path) => path.path == location.pathname);
+
   return (
     <>
-      <div className="w-full h-[56px] border-b flex justify-between items-center px-8">
-        <h3>Admin</h3>
+      <header className="w-[calc(100%-320px)] h-[56px] bg-white border-b flex justify-between items-center px-8 fixed top-0 left-[320px] shadow-md">
+        <h3 className="flex items-center">
+          Admin{" "}
+          <FontAwesomeIcon
+            icon={faChevronRight}
+            className="w-10 h-5 cursor-pointer"
+          />{" "}
+          {routePage.text}
+        </h3>
         <div className="flex items-center gap-4">
           <div className="relative">
             <Tooltip title="Email">
@@ -38,7 +73,7 @@ const Header = () => {
             />
           </Tooltip>
         </div>
-      </div>
+      </header>
     </>
   );
 };
