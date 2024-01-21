@@ -67,8 +67,16 @@ const Header = () => {
   const [searchText, setSearcText] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
 
-  let carts = JSON.parse(localStorage.getItem("listcart")) || [];
-  const [cartLocal, setcartLocal] = useState(carts);
+  const [cartLocal, setcartLocal] = useState(() => {
+    const carts = JSON.parse(localStorage.getItem("listcart")) || [];
+    return carts;
+  });
+  const [numCart, setNumCart] = useState(cartLocal.lenght || 0);
+  useEffect(() => {
+    const cartsUpdate = JSON.parse(localStorage.getItem("listcart")) || [];
+    setcartLocal(cartsUpdate);
+    setNumCart(cartLocal.length);
+  }, [JSON.parse(localStorage.getItem("listcart"))]);
 
   const handleClose = () => setShowMenu(false);
   const handleShow = () => setShowMenu(true);
@@ -107,7 +115,11 @@ const Header = () => {
   );
 
   const cartHover = cartLocal.map((cart, index) => (
-    <div key={index} className="flex items-center justify-between gap-2">
+    <div
+      onClick={() => navigate(`/${cart.id}`)}
+      key={index}
+      className="flex items-center justify-between gap-2 cursor-pointer rounded-md hover:bg-[#ededed]"
+    >
       <img className="w-[70px] h-[70px]" src={cart.img} alt={cart.name} />
       <span className="text-left">{cart.name}</span>
     </div>
@@ -129,15 +141,26 @@ const Header = () => {
           <div className="h-full w-11 ms-2 relative">
             <div className="cart">
               <Link to="/gio-hang" className="">
-                <div className="w-5 h-5 flex items-center justify-center text-white bg-[#d64646] rounded-[100rem] absolute right-0">
-                  {carts.length}
+                <div className="w-4 h-4 flex items-center justify-center text-white text-xs bg-[#d64646] rounded-[100rem] absolute right-0">
+                  {numCart}
                 </div>
                 <img src={Icon_cart} className="h-full w-full" alt="" />
               </Link>
             </div>
             <div className="showcart rounded-sm shadow-lg bg-white absolute z-[99] top-[90%] right-0 hidden">
-              <div className="w-[340px] flex flex-col items-center  text-center p-2">
-                {cartHover}
+              <div className="w-[340px] max-h-[500px] overflow-scroll flex flex-col items-center  text-center p-2">
+                {numCart > 0 ? (
+                  <>{cartHover}</>
+                ) : (
+                  <>
+                    <div className="flex flex-col justify-center items-center">
+                      <img className="w-20 m-[15px]" src={Icon_Incart} alt="" />
+                      <p className="mb-2">
+                        Không có sản phẩm nào trong giỏ hàng của bạn
+                      </p>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>

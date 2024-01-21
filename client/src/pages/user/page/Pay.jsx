@@ -51,8 +51,8 @@ const Pay = () => {
         <title>TEELAB - Thanh toán</title>
       </Helmet>
       <Header></Header>
-      <form className="container flex flex-col lg:flex-row h-[100dvh]">
-        <main className="lg:w-[65%] ps-0 p-[28px]">
+      <form className="container flex flex-col lg:flex-row">
+        <main className="lg:w-[65%] ps-0 p-[28px] pt-3">
           <div className="flex flex-col lg:flex-row justify-between gap-[28px] ">
             <div className="lg:w-[50%]">
               <h3 className="font-semibold text-xl mb-2">
@@ -98,9 +98,11 @@ const Pay = () => {
             </div>
           </div>
         </main>
-        <aside className="flex-1 bg-[#fafafa] pe-0 p-[28px] border-l border-gray-300">
-          <h3 className="font-semibold text-xl mb-2">Đơn hàng (2 sản phẩm)</h3>
-          {printCart}
+        <aside className="flex-1 bg-[#fafafa] p-[28px] pt-3 border-l border-gray-300">
+          <h3 className="font-semibold text-xl mb-2">
+            Đơn hàng ({cartLocal.length} sản phẩm)
+          </h3>
+          <div className="h-[300px] overflow-scroll">{printCart}</div>
           <div className="flex gap-2 justify-between items-center pt-3 mt-3 border-t-[1px] border-gray-300">
             <FloatingLabel
               className="border rounded-lg w-[65%]"
@@ -110,7 +112,7 @@ const Pay = () => {
             </FloatingLabel>
             <button
               type="button"
-              className="flex-1 px-6 py-3 bg-slate-700 rounded-md text-white"
+              className="flex-1 px-6 py-3 bg-slate-700 rounded-md text-white hover:opacity-70"
             >
               Áp dụng
             </button>
@@ -134,7 +136,7 @@ const Pay = () => {
               <FontAwesomeIcon icon={faArrowLeft} />
               Quay về giỏ hàng
             </Link>
-            <button className="px-5 py-3 bg-black text-white rounded-md">
+            <button className="px-5 py-3 bg-black text-white rounded-md hover:opacity-70">
               ĐẶT HÀNG
             </button>
           </div>

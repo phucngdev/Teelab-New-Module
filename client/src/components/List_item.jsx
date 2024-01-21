@@ -17,10 +17,18 @@ const List_item = (data) => {
   };
 
   // hàm click icon add
-  const handleAddCart = (item) => {
-    const newListCart = [...cartLocal, item];
-    setcartLocal(newListCart);
-    localStorage.setItem("listcart", JSON.stringify(newListCart));
+  const handleAddCart = (id, img, name, price) => {
+    const newItemCart = {
+      id: id,
+      img: img,
+      name: name,
+      price: price,
+      num: 1,
+      createdTime: new Date(),
+    };
+    cartLocal.unshift(newItemCart);
+    console.log(cartLocal);
+    localStorage.setItem("listcart", JSON.stringify(cartLocal));
   };
 
   // điều hướng trang đến /id
@@ -60,7 +68,9 @@ const List_item = (data) => {
               className="btn-addcart w-[35px] h-[35px] border-0 shadow-none bg-[#696969] rounded-[50%] flex justify-center items-center"
               title="Thêm vào giỏ hàng"
               type="button"
-              onClick={() => handleAddCart(item)}
+              onClick={() =>
+                handleAddCart(item.id, item.img, item.name, item.price)
+              }
             >
               <img src={Icon_addcart} alt="" />
             </button>

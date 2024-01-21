@@ -12,7 +12,7 @@ import Icon_Incart from "/icon-header/icon_incart.svg";
 const Cart = () => {
   const [cartLocal, setcartLocal] = useState(() => {
     const carts = JSON.parse(localStorage.getItem("listcart")) || [];
-    return carts.map((item) => ({ ...item, num: 1 }));
+    return carts;
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [idDelete, setIdDelete] = useState(null);
@@ -53,6 +53,7 @@ const Cart = () => {
     }
   };
 
+  // tính tổng tiền
   const calculateTotalPrice = () => {
     return cartLocal.reduce((total, cartItem) => {
       const itemTotal = cartItem.num * FormatString(cartItem.price);
@@ -61,6 +62,7 @@ const Cart = () => {
   };
   const total = calculateTotalPrice();
 
+  // click thanh toán
   const handlePay = () => {
     localStorage.setItem("listcart", JSON.stringify(cartLocal));
     navigate("/thanh-toan");
