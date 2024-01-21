@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../../components/pay/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet";
 import FormatString from "../../../utils/formatString";
 import FormatPrice from "../../../utils/formatPrice";
 import { Button, Modal } from "antd";
+import Icon_Incart from "/icon-header/icon_incart.svg";
 
 const Cart = () => {
   const [cartLocal, setcartLocal] = useState(() => {
@@ -14,10 +15,21 @@ const Cart = () => {
     return carts.map((item) => ({ ...item, num: 1 }));
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = () => {
+  const [idDelete, setIdDelete] = useState(null);
+
+  const showModal = (id) => {
+    setIdDelete(id);
     setIsModalOpen(true);
   };
+
+  // xoá sản phẩm
+  const handleRemove = () => {
+    const filterCart = cartLocal.filter((job) => job.id !== idDelete);
+    localStorage.setItem("listcart", JSON.stringify(filterCart));
+    setcartLocal(filterCart);
+  };
   const handleOk = () => {
+    handleRemove();
     setIsModalOpen(false);
   };
   const handleCancel = () => {
@@ -41,12 +53,6 @@ const Cart = () => {
     }
   };
 
-  const handleRemove = () => {
-    const filterCart = cartLocal.filter((job) => job.id !== idDelete);
-    localStorage.setItem("listcart", JSON.stringify(filterCart));
-    setJobLocal(filterCart);
-  };
-
   const calculateTotalPrice = () => {
     return cartLocal.reduce((total, cartItem) => {
       const itemTotal = cartItem.num * FormatString(cartItem.price);
@@ -54,6 +60,11 @@ const Cart = () => {
     }, 0);
   };
   const total = calculateTotalPrice();
+
+  const handlePay = () => {
+    localStorage.setItem("listcart", JSON.stringify(cartLocal));
+    navigate("/thanh-toan");
+  };
 
   const printCart = cartLocal.map((cart, index) => (
     <div key={index} className="flex justify-between py-[7px]">
@@ -70,7 +81,7 @@ const Cart = () => {
             <div>/</div>
             <div>M</div>
           </div>
-          <Button onClick={showModal}>
+          <Button onClick={() => showModal(cart.id)}>
             <span className="text-[#ff0000]">Xoá</span>
           </Button>
         </div>
@@ -127,7 +138,16 @@ const Cart = () => {
             <div className="font-bold text-center w-[16%]">Số lượng</div>
             <div className="font-bold text-center w-[16%]">Thành tiền</div>
           </div>
-          {printCart}
+          {cartLocal.length > 0 ? (
+            <>{printCart}</>
+          ) : (
+            <div className="flex flex-col justify-center items-center">
+              <img className="w-20 m-[15px]" src={Icon_Incart} alt="" />
+              <p className="mb-2">
+                Không có sản phẩm nào trong giỏ hàng của bạn
+              </p>
+            </div>
+          )}
         </div>
         <div className="flex justify-end mt-5">
           <div className="flex flex-col">
@@ -138,7 +158,7 @@ const Cart = () => {
               </div>
             </div>
             <button
-              onClick={() => navigate("/thanh-toan")}
+              onClick={handlePay}
               className="w-[360px] bg-black text-white py-2 rounded-sm hover:opacity-75 mt-1"
             >
               Thanh toán

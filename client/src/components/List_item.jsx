@@ -21,7 +21,6 @@ const List_item = (data) => {
     const newListCart = [...cartLocal, item];
     setcartLocal(newListCart);
     localStorage.setItem("listcart", JSON.stringify(newListCart));
-    console.log(newListCart);
   };
 
   // điều hướng trang đến /id

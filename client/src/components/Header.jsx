@@ -67,6 +67,9 @@ const Header = () => {
   const [searchText, setSearcText] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
 
+  let carts = JSON.parse(localStorage.getItem("listcart")) || [];
+  const [cartLocal, setcartLocal] = useState(carts);
+
   const handleClose = () => setShowMenu(false);
   const handleShow = () => setShowMenu(true);
 
@@ -95,7 +98,7 @@ const Header = () => {
 
   const formatOptionLabel = ({ value, label, imgSrc }) => (
     <div
-      className="flex items-center gap-3"
+      className="flex items-center gap-3 cursor-pointer"
       onClick={() => navigate(`/${value}`)}
     >
       <img src={imgSrc} alt={label} className="w-10 " />
@@ -103,9 +106,16 @@ const Header = () => {
     </div>
   );
 
+  const cartHover = cartLocal.map((cart, index) => (
+    <div key={index} className="flex items-center justify-between gap-2">
+      <img className="w-[70px] h-[70px]" src={cart.img} alt={cart.name} />
+      <span className="text-left">{cart.name}</span>
+    </div>
+  ));
+
   return (
-    <header className="header w-full ">
-      <div className="hidden md:block w-full py-[5px] bg-[#f5f5f5]">
+    <header className="header">
+      <div className="hidden md:block py-[5px] bg-[#f5f5f5]">
         <div className="container mx-auto flex justify-end">
           <form className="relative h-10 flex items-center">
             <Select
@@ -120,17 +130,14 @@ const Header = () => {
             <div className="cart">
               <Link to="/gio-hang" className="">
                 <div className="w-5 h-5 flex items-center justify-center text-white bg-[#d64646] rounded-[100rem] absolute right-0">
-                  0
+                  {carts.length}
                 </div>
                 <img src={Icon_cart} className="h-full w-full" alt="" />
               </Link>
             </div>
-            <div className="showcart rounded-sm shadow-lg bg-white absolute z-10 top-[90%] right-0 hidden">
-              <div className="w-[340px] flex flex-col items-center  text-center">
-                <img className="w-20 m-[15px]" src={Icon_Incart} alt="" />
-                <p className="mb-2">
-                  Không có sản phẩm nào trong giỏ hàng của bạn
-                </p>
+            <div className="showcart rounded-sm shadow-lg bg-white absolute z-[99] top-[90%] right-0 hidden">
+              <div className="w-[340px] flex flex-col items-center  text-center p-2">
+                {cartHover}
               </div>
             </div>
           </div>

@@ -16,27 +16,21 @@ const Header = () => {
         <Link to="/" className="py-3">
           <img src={logo} alt="" />
         </Link>
-        <Link
-          to="/gio-hang"
+        <div
           className={`ms-4 px-3 py-2 ${
-            isCartPage
-              ? "border-b border-black"
-              : "hover:border-b hover:border-black"
+            isCartPage ? "border-b border-black" : ""
           }`}
         >
           <h3>Giỏ hàng</h3>
-        </Link>
+        </div>
         <FontAwesomeIcon icon={faChevronRight} />
-        <Link
-          to="/thanh-toan"
+        <div
           className={`px-3 py-2 ${
-            isCheckoutPage
-              ? "border-b border-black"
-              : "hover:border-b hover:border-black"
+            isCheckoutPage ? "border-b border-black" : ""
           }`}
         >
           <h3>Thanh toán</h3>
-        </Link>
+        </div>
       </header>
     </>
   );

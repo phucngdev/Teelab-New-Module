@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { Helmet } from "react-helmet";
 import Form from "react-bootstrap/Form";
@@ -11,8 +11,40 @@ import {
   faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import Header from "../../../components/pay/Header";
+import FormatString from "../../../utils/formatString";
+import FormatPrice from "../../../utils/formatPrice";
 
 const Pay = () => {
+  const [cartLocal, setcartLocal] = useState(() => {
+    const listCart = JSON.parse(localStorage.getItem("listcart")) || [];
+    return listCart;
+  });
+  console.log(cartLocal);
+  const calculateTotalPrice = () => {
+    return cartLocal.reduce((total, cartItem) => {
+      const itemTotal = cartItem.num * FormatString(cartItem.price);
+      return total + itemTotal;
+    }, 0);
+  };
+  const total = calculateTotalPrice();
+  const printCart = cartLocal.map((cart) => (
+    <div
+      key={cart.id}
+      className="border border-gray-500 rounded-lg p-2 flex gap-3 items-center justify-between"
+    >
+      <img src={cart.img} alt="" className="w-10 h-10" />
+      <div className="flex flex-1 justify-between items-center">
+        <div className="flex flex-col max-w-[80%]">
+          <b className="text-sm">{cart.name}</b>
+          <p className="font-bold text-xs text-[#969696]">Kem/M</p>
+        </div>
+        <div className="flex flex-col items-center">
+          <p className="text-sm">{cart.price}</p>
+          <p className="text-sm">{cart.num}</p>
+        </div>
+      </div>
+    </div>
+  ));
   return (
     <>
       <Helmet>
@@ -68,44 +100,7 @@ const Pay = () => {
         </main>
         <aside className="flex-1 bg-[#fafafa] pe-0 p-[28px] border-l border-gray-300">
           <h3 className="font-semibold text-xl mb-2">Đơn hàng (2 sản phẩm)</h3>
-          <div className="border border-gray-500 rounded-lg p-2 flex gap-3 items-center justify-between">
-            <img
-              src="https://bizweb.dktcdn.net/thumb/thumb/100/415/697/products/3-9b9639b1-59f1-4c01-96bd-dd5852bc872b.jpg?v=1702897051790"
-              alt=""
-              className="size-[40px]"
-            />
-            <div className="flex flex-1 justify-between items-center">
-              <div className="flex flex-col max-w-[80%]">
-                <b className="text-sm">
-                  Áo Thun Teelab Local Brand Pawfect Day TS215
-                </b>
-                <p className="font-bold text-xs text-[#969696]">Kem/M</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <p className="text-sm">185.000đ</p>
-                <p className="text-sm">x1</p>
-              </div>
-            </div>
-          </div>
-          <div className="border border-gray-500 rounded-lg p-2 flex gap-3 items-center justify-between">
-            <img
-              src="https://bizweb.dktcdn.net/thumb/thumb/100/415/697/products/3-9b9639b1-59f1-4c01-96bd-dd5852bc872b.jpg?v=1702897051790"
-              alt=""
-              className="size-[40px]"
-            />
-            <div className="flex flex-1 justify-between items-center">
-              <div className="flex flex-col max-w-[80%]">
-                <b className="text-sm">
-                  Áo Thun Teelab Local Brand Pawfect Day TS215
-                </b>
-                <p className="font-bold text-xs text-[#969696]">Kem/M</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <p className="text-sm">185.000đ</p>
-                <p className="text-sm">x1</p>
-              </div>
-            </div>
-          </div>
+          {printCart}
           <div className="flex gap-2 justify-between items-center pt-3 mt-3 border-t-[1px] border-gray-300">
             <FloatingLabel
               className="border rounded-lg w-[65%]"
@@ -123,7 +118,7 @@ const Pay = () => {
           <div className="flex flex-col gap-1 my-3 py-3 border-b-[1px] border-t-[1px] border-gray-300">
             <div className="flex justify-between items-center ">
               <p className="text-[#717171]">Tạm tính</p>
-              <p className="text-[#717171]">370.000đ</p>
+              <p className="text-[#717171]">{FormatPrice(total)}</p>
             </div>
             <div className="flex justify-between items-center">
               <p className="text-[#717171]">Phí vận chuyển</p>
@@ -132,7 +127,7 @@ const Pay = () => {
           </div>
           <div className="flex justify-between items-center">
             <p className="text-[#717171] text-lg">Tổng cộng</p>
-            <p className="font-bold text-xl">390.000đ</p>
+            <p className="font-bold text-xl">{FormatPrice(total + 20000)}</p>
           </div>
           <div className="flex gap-3 justify-between items-center mt-3 pt-3 border-t-[1px] border-gray-300">
             <Link to="/gio-hang" className="text-base flex gap-1 items-center">
