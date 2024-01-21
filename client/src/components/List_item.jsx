@@ -9,6 +9,7 @@ const List_item = (data) => {
     const carts = JSON.parse(localStorage.getItem("listcart")) || [];
     return carts;
   });
+  const [toggle, setToggle] = useState(false);
 
   // thay đổi active của product
   const handleRadioChange = (e, itemId) => {
@@ -29,6 +30,8 @@ const List_item = (data) => {
     cartLocal.unshift(newItemCart);
     console.log(cartLocal);
     localStorage.setItem("listcart", JSON.stringify(cartLocal));
+    setToggle(!toggle);
+    localStorage.setItem("toggle", JSON.stringify(toggle));
   };
 
   // điều hướng trang đến /id

@@ -71,12 +71,11 @@ const Header = () => {
     const carts = JSON.parse(localStorage.getItem("listcart")) || [];
     return carts;
   });
-  const [numCart, setNumCart] = useState(cartLocal.lenght || 0);
+
   useEffect(() => {
     const cartsUpdate = JSON.parse(localStorage.getItem("listcart")) || [];
     setcartLocal(cartsUpdate);
-    setNumCart(cartLocal.length);
-  }, [JSON.parse(localStorage.getItem("listcart"))]);
+  }, [localStorage.getItem("toggle")]);
 
   const handleClose = () => setShowMenu(false);
   const handleShow = () => setShowMenu(true);
@@ -142,14 +141,14 @@ const Header = () => {
             <div className="cart">
               <Link to="/gio-hang" className="">
                 <div className="w-4 h-4 flex items-center justify-center text-white text-xs bg-[#d64646] rounded-[100rem] absolute right-0">
-                  {numCart}
+                  {cartLocal.length}
                 </div>
                 <img src={Icon_cart} className="h-full w-full" alt="" />
               </Link>
             </div>
             <div className="showcart rounded-sm shadow-lg bg-white absolute z-[99] top-[90%] right-0 hidden">
               <div className="w-[340px] max-h-[500px] overflow-scroll flex flex-col items-center  text-center p-2">
-                {numCart > 0 ? (
+                {cartLocal.length > 0 ? (
                   <>{cartHover}</>
                 ) : (
                   <>
