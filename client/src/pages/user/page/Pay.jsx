@@ -19,7 +19,10 @@ const Pay = () => {
     const listCart = JSON.parse(localStorage.getItem("listcart")) || [];
     return listCart;
   });
-  console.log(cartLocal);
+
+  const quantityCart = cartLocal.reduce((sum, cart) => sum + cart.num, 0);
+  const [quantity, setQuantity] = useState(quantityCart);
+
   const calculateTotalPrice = () => {
     return cartLocal.reduce((total, cartItem) => {
       const itemTotal = cartItem.num * FormatString(cartItem.price);
@@ -40,7 +43,7 @@ const Pay = () => {
         </div>
         <div className="flex flex-col items-center">
           <p className="text-sm">{cart.price}</p>
-          <p className="text-sm">{cart.num}</p>
+          <p className="text-sm">x{cart.num}</p>
         </div>
       </div>
     </div>
@@ -100,7 +103,7 @@ const Pay = () => {
         </main>
         <aside className="flex-1 bg-[#fafafa] p-[28px] pt-3 border-l border-gray-300">
           <h3 className="font-semibold text-xl mb-2">
-            Đơn hàng ({cartLocal.length} sản phẩm)
+            Đơn hàng ({quantity} sản phẩm)
           </h3>
           <div className="h-[300px] overflow-scroll">{printCart}</div>
           <div className="flex gap-2 justify-between items-center pt-3 mt-3 border-t-[1px] border-gray-300">

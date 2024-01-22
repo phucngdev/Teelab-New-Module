@@ -72,9 +72,17 @@ const Header = () => {
     return carts;
   });
 
+  const quantityCart = cartLocal.reduce((sum, cart) => sum + cart.num, 0);
+  const [quantity, setQuantity] = useState(quantityCart);
+
   useEffect(() => {
     const cartsUpdate = JSON.parse(localStorage.getItem("listcart")) || [];
+    const quantityCartUpdate = cartsUpdate.reduce(
+      (sum, cart) => sum + cart.num,
+      0
+    );
     setcartLocal(cartsUpdate);
+    setQuantity(quantityCartUpdate);
   }, [localStorage.getItem("toggle")]);
 
   const handleClose = () => setShowMenu(false);
@@ -141,14 +149,14 @@ const Header = () => {
             <div className="cart">
               <Link to="/gio-hang" className="">
                 <div className="w-4 h-4 flex items-center justify-center text-white text-xs bg-[#d64646] rounded-[100rem] absolute right-0">
-                  {cartLocal.length}
+                  {quantity}
                 </div>
                 <img src={Icon_cart} className="h-full w-full" alt="" />
               </Link>
             </div>
             <div className="showcart rounded-sm shadow-lg bg-white absolute z-[99] top-[90%] right-0 hidden">
               <div className="w-[340px] max-h-[500px] overflow-scroll flex flex-col items-center  text-center p-2">
-                {cartLocal.length > 0 ? (
+                {quantity > 0 ? (
                   <>{cartHover}</>
                 ) : (
                   <>

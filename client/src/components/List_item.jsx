@@ -19,19 +19,32 @@ const List_item = (data) => {
 
   // hàm click icon add
   const handleAddCart = (id, img, name, price) => {
-    const newItemCart = {
-      id: id,
-      img: img,
-      name: name,
-      price: price,
-      num: 1,
-      createdTime: new Date(),
-    };
-    cartLocal.unshift(newItemCart);
-    console.log(cartLocal);
-    localStorage.setItem("listcart", JSON.stringify(cartLocal));
-    setToggle(!toggle);
-    localStorage.setItem("toggle", JSON.stringify(toggle));
+    const findToId = cartLocal.find((item) => item.id === id);
+    if (findToId) {
+      const newItemCart = {
+        ...findToId,
+        num: findToId.num + 1,
+        createdTime: new Date(),
+      };
+      const indexCart = cartLocal.indexOf(findToId);
+      cartLocal[indexCart] = newItemCart;
+      localStorage.setItem("listcart", JSON.stringify(cartLocal));
+      setToggle(!toggle);
+      localStorage.setItem("toggle", JSON.stringify(toggle));
+    } else {
+      const newItemCart = {
+        id: id,
+        img: img,
+        name: name,
+        price: price,
+        num: 1,
+        createdTime: new Date(),
+      };
+      cartLocal.unshift(newItemCart);
+      localStorage.setItem("listcart", JSON.stringify(cartLocal));
+      setToggle(!toggle);
+      localStorage.setItem("toggle", JSON.stringify(toggle));
+    }
   };
 
   // điều hướng trang đến /id

@@ -43,6 +43,7 @@ const Cart = () => {
     const updatedCart = [...cartLocal];
     updatedCart[index].num += 1;
     setcartLocal(updatedCart);
+    localStorage.setItem("listcart", JSON.stringify(cartLocal));
   };
 
   const handleMinus = (index) => {
@@ -50,6 +51,7 @@ const Cart = () => {
     if (updatedCart[index].num > 1) {
       updatedCart[index].num -= 1;
       setcartLocal(updatedCart);
+      localStorage.setItem("listcart", JSON.stringify(cartLocal));
     }
   };
 
