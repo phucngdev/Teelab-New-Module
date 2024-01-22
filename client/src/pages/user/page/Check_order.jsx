@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
-import Header from "../../../components/Header";
-import Footer from "../../../components/Footer";
 import { Carousel, Button } from "antd";
 import { useNavigate } from "react-router-dom";
 
@@ -19,7 +17,6 @@ const Check_order = () => {
       <Helmet>
         <title>Kiểm tra đơn hàng | TEELAB</title>
       </Helmet>
-      <Header></Header>
       <div className="container p-6 flex gap-3">
         <div className="w-[30%] px-[15px] rounded-md shadow-lg ">
           <h5 className=" text-[#333] text-xl font-medium pt-4">
@@ -74,7 +71,6 @@ const Check_order = () => {
           </Carousel>
         </div>
       </div>
-      <Footer></Footer>
     </>
   );
 };

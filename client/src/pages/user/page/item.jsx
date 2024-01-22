@@ -4,8 +4,6 @@ import { Slide } from "react-slideshow-image";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "react-slideshow-image/dist/styles.css";
-import Header from "./Header";
-import Footer from "./Footer";
 import axios from "axios";
 
 const Item = () => {
@@ -65,7 +63,6 @@ const Item = () => {
   return (
     fakeApi[0] && (
       <>
-        <Header></Header>
         <Helmet>
           <title>{fakeApi[0].name}</title>
         </Helmet>
@@ -295,7 +292,6 @@ const Item = () => {
             </div>
           </div>
         </div>
-        <Footer></Footer>
       </>
     )
   );

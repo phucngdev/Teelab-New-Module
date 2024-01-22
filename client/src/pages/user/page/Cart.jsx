@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../../../components/pay/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { Helmet } from "react-helmet";
@@ -121,7 +120,6 @@ const Cart = () => {
       <Helmet>
         <title>TEELAB - Giỏ hàng</title>
       </Helmet>
-      <Header></Header>
       <Modal
         title="Xác nhận xoá sản phẩm"
         open={isModalOpen}

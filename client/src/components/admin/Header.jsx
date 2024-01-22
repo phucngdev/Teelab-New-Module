@@ -44,7 +44,7 @@ const Header = () => {
             icon={faChevronRight}
             className="w-10 h-5 cursor-pointer"
           />{" "}
-          {routePage.text}
+          {routePage?.text}
         </h3>
         <div className="flex items-center gap-4">
           <div className="relative">

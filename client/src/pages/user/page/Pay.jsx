@@ -11,7 +11,6 @@ import {
   faMoneyBillAlt,
   faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
-import Header from "../../../components/pay/Header";
 import FormatString from "../../../utils/formatString";
 import FormatPrice from "../../../utils/formatPrice";
 import { InfoCircleTwoTone, CheckCircleTwoTone } from "@ant-design/icons";
@@ -178,7 +177,6 @@ const Pay = () => {
       <Helmet>
         <title>TEELAB - Thanh toán</title>
       </Helmet>
-      <Header></Header>
       {contextHolder}
       {isModalOpen && (
         <Modal

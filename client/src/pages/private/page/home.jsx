@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../../components/admin/Header";
+import { Helmet } from "react-helmet";
 import {
   FundTwoTone,
   UpCircleTwoTone,
@@ -11,7 +11,7 @@ import FormatPrice from "../../../utils/formatPrice";
 import "chart.js/auto";
 import { Line, Bar, Doughnut } from "react-chartjs-2";
 
-const Home = () => {
+const HomeAdmin = () => {
   const main = [
     {
       id: 1,
@@ -109,53 +109,6 @@ const Home = () => {
     },
   };
 
-  // biểu đồ line
-  // const dataSell = {
-  //   labels: [
-  //     "Jan",
-  //     "Feb",
-  //     "Mar",
-  //     "Apr",
-  //     "May",
-  //     "Jun",
-  //     "Jul",
-  //     "Aug",
-  //     "Sep",
-  //     "Oct",
-  //     "Nov",
-  //     "Dec",
-  //   ],
-  //   datasets: [
-  //     {
-  //       data: [300, 467, 265, 106, 107, 111, 472, 221, 783, 573, 382, 647],
-  //       label: "Áo Polo",
-  //       borderColor: "#3e95cd",
-  //       fill: false,
-  //       tension: 0.3,
-  //     },
-  //     {
-  //       data: [
-  //         940, 350, 1294, 1783, 635, 809, 947, 1402, 1583, 1304, 1684, 3903,
-  //       ],
-  //       label: "Áo thun",
-  //       borderColor: "#8e5ea2",
-  //       fill: false,
-  //       tension: 0.3,
-  //     },
-  //   ],
-  // };
-
-  // const optionsSell = {
-  //   legend: {
-  //     display: true,
-  //     position: "bottom",
-  //   },
-  //   title: {
-  //     display: true,
-  //     text: "Thống kê đơn hàng theo năm",
-  //   },
-  // };
-
   const dataDevice = {
     labels: ["Mobile Phone", "Computer", "tablet"],
     datasets: [
@@ -177,10 +130,12 @@ const Home = () => {
       text: "Lượng thiết bị truy cập",
     },
   };
-
   return (
     <>
-      <Header></Header>
+      <Helmet>
+        <title>TEELAB -Tổng quan</title>
+      </Helmet>
+
       <div className="w-[calc(100%-320px)] ms-[320px] mt-[56px]">
         <div className="flex justify-between items-center p-[30px] gap-3">
           {mainItem}
@@ -195,10 +150,9 @@ const Home = () => {
             <h3 className="text-center">Biểu đồ thiết bị truy cập</h3>
           </div>
         </div>
-        {/* <Line data={dataSell} options={optionsSell} className="p-[30px] pt-0" /> */}
       </div>
     </>
   );
 };
 
-export default Home;
+export default HomeAdmin;

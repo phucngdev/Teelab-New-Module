@@ -78,6 +78,7 @@ const Header = () => {
   });
 
   useEffect(() => {
+    console.log("chạy uef");
     const cartsUpdate = JSON.parse(localStorage.getItem("listcart")) || [];
     const quantityCartUpdate = cartsUpdate.reduce(
       (sum, cart) => sum + cart.num,

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import List_item from "../../../components/List_item";
+import List_item from "../../../components/user/List_item";
 import loadData from "../../../api/CallApi";
 
 const Producs = () => {

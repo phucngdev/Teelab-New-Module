@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Header from "../../../components/Header";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
@@ -61,7 +60,6 @@ const Check = () => {
       <Helmet>
         <title>Kiểm tra đơn hàng - TEELAB</title>
       </Helmet>
-      <Header></Header>
       <div className="container">
         <div className="flex items-center gap-2 mb-2">
           <h2 className="font-semibold text-xl ">Kiểm tra đơn hàng</h2>

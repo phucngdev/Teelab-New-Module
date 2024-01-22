@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Helmet } from "react-helmet";
-import Header from "../../../components/Header";
-import Footer from "../../../components/Footer";
 
 const ListItem = ({ title, texts }) => (
   <div>
@@ -52,7 +50,6 @@ const Service = () => {
       <Helmet>
         <title>Chính sách Đổi trả | TEELAB</title>
       </Helmet>
-      <Header></Header>
       <div className="container mx-auto px-[15px] mt-[56px] mb-[30px]">
         <h1 className="text-[40px] text-[#333] mb-5 font-light">
           Chính sách Đổi trả
@@ -71,7 +68,6 @@ const Service = () => {
           </p>
         </div>
       </div>
-      <Footer></Footer>
     </div>
   );
 };

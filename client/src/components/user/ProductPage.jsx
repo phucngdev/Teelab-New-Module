@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import iconMenu from "../../public/icon-product/icon_menu.svg";
+import iconMenu from "../../../public/icon-product/icon_menu.svg";
 import { listMenu } from "./Header";
-import Header from "./Header";
-import Footer from "./Footer";
 import List_item from "./List_item";
-import loadData from "../api/CallApi";
+import loadData from "../../api/CallApi";
 
 const ProductPage = (page, titlePage, title) => {
   const [fakeApi, setFakeApi] = useState([]);
@@ -18,7 +16,6 @@ const ProductPage = (page, titlePage, title) => {
       <Helmet>
         <title>{titlePage}</title>
       </Helmet>
-      <Header></Header>
       <div className="container mx-auto flex mt-[56px] mb-[30px] md:mt-[30px]">
         <aside className="w-[20%] h-[522px] p-[15px] hidden lg:block">
           <div className="flex items-center gap-2 font-bold text-2xl">
@@ -36,7 +33,6 @@ const ProductPage = (page, titlePage, title) => {
           {List_item(fakeApi)}
         </div>
       </div>
-      <Footer></Footer>
     </>
   );
 };
