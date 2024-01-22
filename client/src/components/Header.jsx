@@ -72,8 +72,10 @@ const Header = () => {
     return carts;
   });
 
-  const quantityCart = cartLocal.reduce((sum, cart) => sum + cart.num, 0);
-  const [quantity, setQuantity] = useState(quantityCart);
+  const [quantity, setQuantity] = useState(() => {
+    const quantityCart = cartLocal.reduce((sum, cart) => sum + cart.num, 0);
+    return quantityCart;
+  });
 
   useEffect(() => {
     const cartsUpdate = JSON.parse(localStorage.getItem("listcart")) || [];
@@ -125,10 +127,11 @@ const Header = () => {
     <div
       onClick={() => navigate(`/${cart.id}`)}
       key={index}
-      className="flex items-center justify-between gap-2 cursor-pointer rounded-md hover:bg-[#ededed]"
+      className="flex items-center justify-between gap-2 p-1 cursor-pointer rounded-md hover:bg-[#ededed]"
     >
       <img className="w-[70px] h-[70px]" src={cart.img} alt={cart.name} />
       <span className="text-left">{cart.name}</span>
+      <span>x{cart.num}</span>
     </div>
   ));
 

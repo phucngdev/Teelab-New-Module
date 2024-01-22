@@ -2,30 +2,29 @@ import React from "react";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 
-const properties = {
-  duration: 3000,
-  transitionDuration: 500,
-  arrows: false,
-  infinite: true,
-  easing: "ease",
-  autoplay: true,
-  pauseOnHover: false,
-};
-const slideImages = [
-  "/banner/slider_1.webp",
-  "/banner/slider_2.webp",
-  "/banner/slider_3.webp",
-  "/banner/slider_4.webp",
-  "/banner/slider_5.webp",
-];
-
-const showSlide = slideImages.map((each, index) => (
-  <div key={index} className="">
-    <img className="object-cover h-full" src={each} alt="" />
-  </div>
-));
-
 const Banner = () => {
+  const properties = {
+    duration: 3000,
+    transitionDuration: 500,
+    arrows: false,
+    infinite: true,
+    easing: "ease",
+    autoplay: true,
+    pauseOnHover: false,
+  };
+  const slideImages = [
+    "/banner/slider_1.webp",
+    "/banner/slider_2.webp",
+    "/banner/slider_3.webp",
+    "/banner/slider_4.webp",
+    "/banner/slider_5.webp",
+  ];
+
+  const showSlide = slideImages.map((each, index) => (
+    <div key={index} className="">
+      <img className="object-cover h-full" src={each} alt="" />
+    </div>
+  ));
   return (
     <div className="banner w-full mt-[55px] sm:mt-0 md:mt-0 lg:mt-0 xl:mt-0">
       <Slide {...properties}>{showSlide}</Slide>

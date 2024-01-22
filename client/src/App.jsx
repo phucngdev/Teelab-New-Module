@@ -14,6 +14,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Pay from "./pages/user/page/Pay.jsx";
 import Cart from "./pages/user/page/Cart.jsx";
 import ProductsAdmin from "./pages/private/products.jsx";
+import Check from "./pages/user/page/Check.jsx";
+import NotFound from "./pages/user/page/NotFound.jsx";
 
 function App() {
   const location = useLocation();
@@ -34,7 +36,9 @@ function App() {
         <Route path="/kiem-tra-don-hang" element={<Check_order />}></Route>
         <Route path="/gio-hang" element={<Cart />}></Route>
         <Route path="/thanh-toan" element={<Pay />}></Route>
-        <Route path="/:id" element={<Item />}></Route>
+        <Route path="/chi-tiet-san-pham/:id" element={<Item />}></Route>
+        <Route path="*" element={<NotFound />}></Route>
+        <Route path="/kiem-tra-don-hang/:id" element={<Check />}></Route>
         <Route path="/admin/tong-quan" element={<HomeAdmin />}></Route>
         <Route
           path="/admin/san-pham/tat-ca-san-pham"

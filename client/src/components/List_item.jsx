@@ -66,7 +66,7 @@ const List_item = (data) => {
           </div>
           <div className="imgHover opacity-[0.01] transition-opacity duration-500 absolute z-50 top-0 left-0 hover:opacity-100">
             <button
-              onClick={() => navigate(`/${item.id}`)}
+              onClick={() => navigate(`/chi-tiet-san-pham/${item.id}`)}
               className="w-full h-full "
             >
               <img
@@ -118,7 +118,7 @@ const List_item = (data) => {
               ))}
             </div>
             <h3 className="text-base font-normal text-[#333] text-center mb-[10px] hover:text-[#dc3545]">
-              <button onClick={() => navigate(`/${item.id}`)}>
+              <button onClick={() => navigate(`/chi-tiet-san-pham/${item.id}`)}>
                 {item.name}
               </button>
             </h3>

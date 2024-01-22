@@ -1,49 +1,81 @@
-import React from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
+import { Carousel, Button } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const Check_order = () => {
+  const navigate = useNavigate();
+  const [idOrder, setIdOrder] = useState("");
+  const handleIdOrder = (e) => {
+    setIdOrder(e.target.value);
+  };
+  const checkId = (id) => {
+    navigate(`/kiem-tra-don-hang/${id}`);
+  };
   return (
-    <div className="check_order">
+    <>
       <Helmet>
         <title>Kiểm tra đơn hàng | TEELAB</title>
       </Helmet>
       <Header></Header>
-      <div className="container mx-auto">
-        <div className="px-[15px] py-[25px] my-[30px]">
-          <div className="w-[40%] px-[15px] rounded-md shadow-lg bg-[rgba(228,228,228,1)]">
-            <h5 className="text-center text-[#333] text-xl font-medium pt-4">
-              Kiểm tra đơn hàng
-            </h5>
-            <hr className="my-[18px] border-t-2" />
-            <form action="" className="flex flex-col gap-2">
-              <div className="">Kiểm tra bằng</div>
-              <div className="flex gap-2 items-center">
-                <input id="phone" type="radio" name="check" checked="checked" />
-                <label for="phone">Số điện thoại</label>
-                <input id="email" type="radio" name="check" />
-                <label for="email">Email</label>
-              </div>
-              <input
-                className="px-3 py-1 rounded-md my-2"
-                type="text"
-                placeholder="Nhập tại đây..."
+      <div className="container p-6 flex gap-3">
+        <div className="w-[30%] px-[15px] rounded-md shadow-lg ">
+          <h5 className=" text-[#333] text-xl font-medium pt-4">
+            Kiểm tra đơn hàng
+          </h5>
+          <hr className="my-[18px] border-t-2" />
+          <form className="w-full flex flex-col gap-2 mx-auto">
+            <h3>Nhập mã đơn hàng</h3>
+            <input
+              className="px-3 py-1 rounded-md my-2 border"
+              type="text"
+              placeholder="Nhập tại đây..."
+              value={idOrder}
+              onChange={handleIdOrder}
+            />
+            <Button
+              onClick={() => checkId(idOrder)}
+              className="mb-4 bg- rounded-md bg-blue-600 hover:bg-blue-500"
+              type="button"
+            >
+              <span className="text-[13px] text-white font-normal text-center">
+                Kiểm tra
+              </span>
+            </Button>
+            <hr />
+            <h3 className="text-center mt-2">
+              Liên hệ với TEELAB qua email TEELAB@gmail.com để biết thêm chi
+              tiết
+            </h3>
+          </form>
+        </div>
+        <div className="flex-1 h-full overflow-hidden">
+          <Carousel autoplay>
+            <div>
+              <img
+                src="https://bizweb.dktcdn.net/100/415/697/themes/902041/assets/slider_3.jpg?1705474695254"
+                alt=""
               />
-              <button
-                className="w-[75px] h-[35px] mb-4 bg-[#357ebd] rounded-md"
-                type="submit"
-              >
-                <span className="text-[13px] text-white font-normal text-center">
-                  Kiểm tra
-                </span>
-              </button>
-            </form>
-          </div>
+            </div>
+            <div>
+              <img
+                src="https://bizweb.dktcdn.net/100/415/697/themes/902041/assets/slider_4.jpg?1705474695254"
+                alt=""
+              />
+            </div>
+            <div>
+              <img
+                src="https://bizweb.dktcdn.net/100/415/697/themes/902041/assets/slider_5.jpg?1705474695254"
+                alt=""
+              />
+            </div>
+          </Carousel>
         </div>
       </div>
       <Footer></Footer>
-    </div>
+    </>
   );
 };
 

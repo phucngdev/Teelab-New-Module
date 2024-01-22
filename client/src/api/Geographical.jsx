@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import axios from "axios";
 
-const CitySelector = () => {
+const CitySelector = (props) => {
   const [provinces, setProvinces] = useState([]);
   const [districts, setDistricts] = useState([]);
   const [communes, setCommunes] = useState([]);
@@ -61,20 +61,31 @@ const CitySelector = () => {
     label: commune.Name,
   }));
 
-  // các function handle ko chạy khi thay đổi option
   const handleProvinceChange = (selectedOption) => {
     setSelectedProvince(selectedOption.value);
+    props.setParentAddressSelect((prevAddressSelect) => ({
+      ...prevAddressSelect,
+      city: selectedOption.label,
+    }));
     setSelectedDistrict("");
     setSelectedCommune("");
   };
 
   const handleDistrictChange = (selectedOption) => {
     setSelectedDistrict(selectedOption.value);
+    props.setParentAddressSelect((prevAddressSelect) => ({
+      ...prevAddressSelect,
+      district: selectedOption.label,
+    }));
     setSelectedCommune("");
   };
 
   const handleCommuneChange = (selectedOption) => {
     setSelectedCommune(selectedOption.value);
+    props.setParentAddressSelect((prevAddressSelect) => ({
+      ...prevAddressSelect,
+      ward: selectedOption.label,
+    }));
   };
 
   return (
