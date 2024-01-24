@@ -19,6 +19,7 @@ import NotFound from "./pages/user/page/NotFound.jsx";
 import Public from "./pages/user/Public.jsx";
 import PublicCart from "./pages/user/PublicCart.jsx";
 import Private from "./pages/private/Private.jsx";
+import Login from "./pages/private/page/Login.jsx";
 
 function App() {
   const location = useLocation();
@@ -40,12 +41,13 @@ function App() {
           <Route path="kiem-tra-don-hang" element={<Check_order />}></Route>
           <Route path="chi-tiet-san-pham/:id" element={<Item />}></Route>
           <Route path="kiem-tra-don-hang/:id" element={<Check />}></Route>
-          <Route path="*" element={<NotFound />}></Route>
         </Route>
+        <Route path="*" element={<NotFound />}></Route>
         <Route path="/gio-hang" element={<PublicCart />}>
           <Route index element={<Cart />}></Route>
           <Route path="thanh-toan" element={<Pay />}></Route>
         </Route>
+        <Route path="/dang-nhap" element={<Login />}></Route>
         <Route path="/admin" element={<Private />}>
           <Route index element={<HomeAdmin />}></Route>
           <Route path="san-pham" element={<ProductsAdmin />}></Route>

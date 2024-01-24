@@ -1336,5 +1336,17 @@
       "price": 555000,
       "createTime": "2024-01-22T14:42:16.356Z"
     }
+  ],
+  "account": [
+    {
+      "id": "00001",
+      "username": "admin",
+      "password": "123",
+      "name": "adminstrator",
+      "email": "phucnguyen09022003@gmail.com",
+      "img": "",
+      "status": false,
+      "createTime": ""
+    }
   ]
 }

@@ -78,7 +78,6 @@ const Header = () => {
   });
 
   useEffect(() => {
-    console.log("chạy uef");
     const cartsUpdate = JSON.parse(localStorage.getItem("listcart")) || [];
     const quantityCartUpdate = cartsUpdate.reduce(
       (sum, cart) => sum + cart.num,
@@ -86,7 +85,7 @@ const Header = () => {
     );
     setcartLocal(cartsUpdate);
     setQuantity(quantityCartUpdate);
-  }, [localStorage.getItem("toggle")]);
+  }, [JSON.parse(localStorage.getItem("toggle"))]);
 
   const handleClose = () => setShowMenu(false);
   const handleShow = () => setShowMenu(true);

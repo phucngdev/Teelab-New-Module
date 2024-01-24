@@ -21,21 +21,8 @@ input:focus {
   outline: none !important;
 }
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-::-webkit-scrollbar-thumb {
-  background: #b8bcc3;
-}
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-::-webkit-scrollbar-track-piece {
-  background-color: #f1f1f1;
-  width: 10px;
+  width: 0;
+  height: 0;
 }
 .cart:hover + .showcart,
 .showcart:hover,
