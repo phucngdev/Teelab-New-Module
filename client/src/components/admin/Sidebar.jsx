@@ -25,12 +25,42 @@ function getItem(label, key, icon, children, type) {
   };
 }
 const items = [
-  getItem("Quản lý tài khoản", "sub1", <MailOutlined />, [
+  getItem(
+    <>
+      <NavLink to="/admin">Tổng quan</NavLink>
+    </>,
+    "sub1",
+    <AppstoreOutlined />
+  ),
+  getItem("Sản phẩm", "sub2", <MailOutlined />, [
+    getItem(
+      <>
+        <NavLink to="/admin/danh-sach-san-pham">Danh sách sản phẩm</NavLink>
+      </>,
+      "1",
+      <AccountBookOutlined />
+    ),
+    getItem(
+      <>
+        <NavLink to="/admin">Sản phẩm hết hạn</NavLink>
+      </>,
+      "2",
+      <AccountBookOutlined />
+    ),
+  ]),
+  getItem("Tài khoản", "sub3", <MailOutlined />, [
     getItem(
       <>
         <NavLink to="/admin/danh-sach-tai-khoan">Danh sách tài khoản</NavLink>
       </>,
-      "1",
+      "3",
+      <AccountBookOutlined />
+    ),
+    getItem(
+      <>
+        <NavLink to="/admin">Tài khoản </NavLink>
+      </>,
+      "4",
       <AccountBookOutlined />
     ),
   ]),

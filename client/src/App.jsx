@@ -51,7 +51,7 @@ function App() {
         <Route path="/dang-nhap" element={<Login />}></Route>
         <Route path="/admin" element={<Private />}>
           <Route index element={<HomeAdmin />}></Route>
-          <Route path="san-pham" element={<ProductsAdmin />}></Route>
+          <Route path="danh-sach-san-pham" element={<ProductsAdmin />}></Route>
           <Route path="danh-sach-tai-khoan" element={<ManagerAcc />}></Route>
         </Route>
       </Routes>

@@ -30,6 +30,7 @@ const Header = ({ admin }) => {
       content: "Đăng xuất thành công",
       icon: <CheckCircleTwoTone twoToneColor="#52c41a" />,
     });
+    localStorage.removeItem("isLogin");
     navigate("/dang-nhap");
   };
   const showDrawer = () => {
@@ -38,8 +39,8 @@ const Header = ({ admin }) => {
 
   return (
     <>
-      <header className="w-[calc(100%-320px)] h-[56px] bg-white border-b flex justify-between items-center px-8 fixed top-0 left-[320px] shadow-md">
-        <h3 className="flex items-center">Admin</h3>
+      <header className="w-[calc(100%-320px)] h-[56px] bg-white border-b flex justify-between items-center px-8 fixed top-0 left-[320px] z-[99] shadow-md">
+        <h3 className="flex items-center">Quản trị viên</h3>
         <div className="flex items-center gap-4">
           <div className="relative">
             <Tooltip title="Email">
