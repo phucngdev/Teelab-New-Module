@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, useLocation, Link } from "react-router-dom";
+import { NavLink, useLocation, Link, useNavigate } from "react-router-dom";
 import logo from "/logo.png";
 import {
   AppstoreOutlined,
@@ -7,11 +7,14 @@ import {
   CarryOutOutlined,
   ShoppingOutlined,
   CarOutlined,
+  MailOutlined,
+  SettingOutlined,
   CalendarOutlined,
   AccountBookOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import { Menu } from "antd";
+
 function getItem(label, key, icon, children, type) {
   return {
     key,
@@ -22,59 +25,19 @@ function getItem(label, key, icon, children, type) {
   };
 }
 const items = [
-  getItem(
-    <>
-      <Link to="/admin">Tổng quan</Link>
-    </>,
-    "sub1",
-    <AppstoreOutlined />
-  ),
-  getItem("Báo cáo", "sub2", <LineChartOutlined />, [
+  getItem("Quản lý tài khoản", "sub1", <MailOutlined />, [
     getItem(
       <>
-        <Link to="/doanh-thu-chi-tiet">Doanh thu chi tiết</Link>
+        <NavLink to="/admin/danh-sach-tai-khoan">Danh sách tài khoản</NavLink>
       </>,
-      "5"
+      "1",
+      <AccountBookOutlined />
     ),
-    getItem(
-      <>
-        <Link to="/doanh-so-ban-hang">Doanh số bán hàng</Link>
-      </>,
-      "6"
-    ),
-  ]),
-  getItem("Quản lý đơn hàng", "sub3", <CarryOutOutlined />, [
-    getItem(
-      <>
-        <Link to="/danh-sach-don-hang">Danh sách đơn hàng</Link>
-      </>,
-      "7"
-    ),
-    getItem("Đơn hàng đã xác nhận", "8"),
-    getItem("Đơn hàng chưa xác nhận", "9"),
-    getItem("Đơn hàng bị huỷ", "10"),
-    getItem("Đơn hàng bị trả lại", "11"),
-    getItem("Đơn hàng đang vận chuyển", "12"),
-  ]),
-  getItem("Quản lý sản phẩm", "sub4", <ShoppingOutlined />, [
-    getItem("Danh sách sản phẩm", "13"),
-    getItem("Quản lý kho", "14"),
-    getItem("Kiểm hàng", "15"),
-    getItem("Chuyển hàng", "16"),
-    getItem("Điều chỉnh giá vốn", "17"),
-  ]),
-  getItem("Dịch vụ vận chuyển", "sub5", <CarOutlined />),
-  getItem("Đặt hàng", "sub6", <CalendarOutlined />),
-  getItem("Sổ quỹ", "sub7", <AccountBookOutlined />),
-  getItem("Quản lý tài khoản", "sub8", <UserOutlined />, [
-    getItem("Danh sách tài khoản", "18"),
-    getItem("Danh sách chặn", "19"),
   ]),
 ];
 
 // submenu keys of first level
 const rootSubmenuKeys = ["sub1", "sub2", "sub4"];
-
 const Sidebar = () => {
   const [openKeys, setOpenKeys] = useState(["sub1"]);
   const onOpenChange = (keys) => {
@@ -85,7 +48,6 @@ const Sidebar = () => {
       setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
     }
   };
-
   return (
     <>
       <div className="w-[320px] h-[100vh] fixed top-0 left-0 bg-white border-e border-[#ccc]">

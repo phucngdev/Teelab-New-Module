@@ -7,12 +7,12 @@ import FormatString from "../../../utils/formatString";
 import FormatPrice from "../../../utils/formatPrice";
 import { Button, Modal } from "antd";
 import Icon_Incart from "/icon-header/icon_incart.svg";
+import { useDispatch, useSelector } from "react-redux";
 
 const Cart = () => {
-  const [cartLocal, setcartLocal] = useState(() => {
-    const carts = JSON.parse(localStorage.getItem("listcart")) || [];
-    return carts;
-  });
+  const cart = useSelector((state) => state.addToCart);
+  const dispatch = useDispatch();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [idDelete, setIdDelete] = useState(null);
 
@@ -23,9 +23,10 @@ const Cart = () => {
 
   // xoá sản phẩm
   const handleRemove = () => {
-    const filterCart = cartLocal.filter((job) => job.id !== idDelete);
-    localStorage.setItem("listcart", JSON.stringify(filterCart));
-    setcartLocal(filterCart);
+    const filterCart = cart.filter((job) => job.id !== idDelete);
+    // localStorage.setItem("listcart", JSON.stringify(filterCart));
+    // setcartLocal(filterCart);
+    // cart = filterCart;
   };
   const handleOk = () => {
     handleRemove();
@@ -39,24 +40,20 @@ const Cart = () => {
 
   // hàm tăng giảm số lượng sản phẩm
   const handleIscrease = (index) => {
-    const updatedCart = [...cartLocal];
+    const updatedCart = [...cart];
     updatedCart[index].num += 1;
-    setcartLocal(updatedCart);
-    localStorage.setItem("listcart", JSON.stringify(cartLocal));
   };
 
   const handleMinus = (index) => {
-    const updatedCart = [...cartLocal];
+    const updatedCart = [...cart];
     if (updatedCart[index].num > 1) {
       updatedCart[index].num -= 1;
-      setcartLocal(updatedCart);
-      localStorage.setItem("listcart", JSON.stringify(cartLocal));
     }
   };
 
   // tính tổng tiền
   const calculateTotalPrice = () => {
-    return cartLocal.reduce((total, cartItem) => {
+    return cart.reduce((total, cartItem) => {
       const itemTotal = cartItem.num * FormatString(cartItem.price);
       return total + itemTotal;
     }, 0);
@@ -65,11 +62,10 @@ const Cart = () => {
 
   // click thanh toán
   const handlePay = () => {
-    localStorage.setItem("listcart", JSON.stringify(cartLocal));
-    navigate("/thanh-toan");
+    navigate("/gio-hang/thanh-toan");
   };
 
-  const printCart = cartLocal.map((cart, index) => (
+  const printCart = cart.map((cart, index) => (
     <div key={index} className="flex justify-between py-[7px]">
       <div className="flex gap-2 items-center w-[51%]">
         <img
@@ -140,7 +136,7 @@ const Cart = () => {
             <div className="font-bold text-center w-[16%]">Số lượng</div>
             <div className="font-bold text-center w-[16%]">Thành tiền</div>
           </div>
-          {cartLocal.length > 0 ? (
+          {cart.length > 0 ? (
             <>{printCart}</>
           ) : (
             <div className="flex flex-col justify-center items-center">

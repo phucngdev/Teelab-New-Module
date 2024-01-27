@@ -9,7 +9,7 @@ const CitySelector = (props) => {
   const [selectedProvince, setSelectedProvince] = useState("");
   const [selectedDistrict, setSelectedDistrict] = useState("");
   const [selectedCommune, setSelectedCommune] = useState("");
-
+  console.log(provinces);
   const addressApi = () => {
     axios
       .get(
@@ -28,7 +28,6 @@ const CitySelector = (props) => {
       const selectedProvinceData = provinces.find(
         (province) => province.Id === selectedProvince
       );
-      console.log(selectedProvinceData);
       setDistricts(selectedProvinceData?.Districts || []);
       setCommunes([]);
       setSelectedDistrict("");

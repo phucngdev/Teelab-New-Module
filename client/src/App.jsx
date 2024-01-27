@@ -16,10 +16,11 @@ import Cart from "./pages/user/page/Cart.jsx";
 import ProductsAdmin from "./pages/private/page/products.jsx";
 import Check from "./pages/user/page/Check.jsx";
 import NotFound from "./pages/user/page/NotFound.jsx";
-import Public from "./pages/user/Public.jsx";
-import PublicCart from "./pages/user/PublicCart.jsx";
-import Private from "./pages/private/Private.jsx";
 import Login from "./pages/private/page/Login.jsx";
+import ManagerAcc from "./pages/private/page/ManagerAcc.jsx";
+import PublicCart from "./routes/PublicCart";
+import Public from "./routes/Public.jsx";
+import Private from "./routes/Private";
 
 function App() {
   const location = useLocation();
@@ -51,6 +52,7 @@ function App() {
         <Route path="/admin" element={<Private />}>
           <Route index element={<HomeAdmin />}></Route>
           <Route path="san-pham" element={<ProductsAdmin />}></Route>
+          <Route path="danh-sach-tai-khoan" element={<ManagerAcc />}></Route>
         </Route>
       </Routes>
     </div>

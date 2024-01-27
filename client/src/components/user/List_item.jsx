@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Icon_addcart from "/public/icon-product/icon_addcart.svg";
+import { act_addToCart } from "../../actions/actionTypes";
 
 const List_item = (data) => {
+  const addCart = useSelector((state) => state.addToCart);
+  const dispatch = useDispatch();
   const [selectedIcon, setSelectedIcon] = useState();
   const [selectedItemId, setSelectedItemId] = useState();
-  const [cartLocal, setcartLocal] = useState(() => {
-    const carts = JSON.parse(localStorage.getItem("listcart")) || [];
-    return carts;
-  });
-  const [toggle, setToggle] = useState(false);
-
   // thay đổi active của product
   const handleRadioChange = (e, itemId) => {
     setSelectedItemId(itemId);
@@ -18,33 +16,8 @@ const List_item = (data) => {
   };
 
   // hàm click icon add
-  const handleAddCart = (id, img, name, price) => {
-    const findToId = cartLocal.find((item) => item.id === id);
-    if (findToId) {
-      const newItemCart = {
-        ...findToId,
-        num: findToId.num + 1,
-        createdTime: new Date(),
-      };
-      const indexCart = cartLocal.indexOf(findToId);
-      cartLocal[indexCart] = newItemCart;
-      localStorage.setItem("listcart", JSON.stringify(cartLocal));
-      setToggle(!toggle);
-      localStorage.setItem("toggle", JSON.stringify(toggle));
-    } else {
-      const newItemCart = {
-        id: id,
-        img: img,
-        name: name,
-        price: price,
-        num: 1,
-        createdTime: new Date(),
-      };
-      cartLocal.unshift(newItemCart);
-      localStorage.setItem("listcart", JSON.stringify(cartLocal));
-      setToggle(!toggle);
-      localStorage.setItem("toggle", JSON.stringify(toggle));
-    }
+  const handleAdd = (id, img, name, price, num = 1) => {
+    dispatch(act_addToCart(id, img, name, price, num));
   };
 
   // điều hướng trang đến /id
@@ -85,7 +58,7 @@ const List_item = (data) => {
               title="Thêm vào giỏ hàng"
               type="button"
               onClick={() =>
-                handleAddCart(item.id, item.img, item.name, item.price)
+                handleAdd(item.id, item.img, item.name, item.price, item.num)
               }
             >
               <img src={Icon_addcart} alt="" />

@@ -13,8 +13,6 @@ const Login = () => {
   const navigate = useNavigate();
   const inputRef = useRef(null);
   const [account, setAccount] = useState([]);
-  const [admin, setAdmin] = useState({});
-  const [isLogin, setIsLogin] = useState(false);
 
   const loadData = () => {
     axios
@@ -49,12 +47,12 @@ const Login = () => {
     const findUser = account.find(
       (user) => user.username === username && user.password === password
     );
-    console.log("find: ", findUser);
     if (findUser) {
-      setAdmin(findUser);
+      console.log(findUser);
+      localStorage.setItem("isLogin", JSON.stringify(findUser));
       success();
       setTimeout(() => {
-        navigate("/admin", { state: { admin: findUser } });
+        navigate("/admin");
       }, 1000);
     } else {
       error();

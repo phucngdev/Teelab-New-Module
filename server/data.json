@@ -1341,12 +1341,24 @@
     {
       "id": "00001",
       "username": "admin",
-      "password": "123",
-      "name": "adminstrator",
+      "password": "1",
+      "name": "adminstrator2",
       "email": "phucnguyen09022003@gmail.com",
       "img": "",
       "status": false,
-      "createTime": ""
+      "createTime": "",
+      "checkpass": "1"
+    },
+    {
+      "id": "00002",
+      "username": "admin1",
+      "password": "1",
+      "name": "adminstrator3",
+      "email": "phucnguyen09022003@gmail.com",
+      "img": "",
+      "status": false,
+      "createTime": "",
+      "checkpass": "1"
     }
   ]
 }
