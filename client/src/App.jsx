@@ -21,6 +21,7 @@ import ManagerAcc from "./pages/private/page/ManagerAcc.jsx";
 import PublicCart from "./routes/PublicCart";
 import Public from "./routes/Public.jsx";
 import Private from "./routes/Private";
+import NotFoundAdmin from "./pages/private/page/NotFound";
 
 function App() {
   const location = useLocation();
@@ -53,6 +54,7 @@ function App() {
           <Route index element={<HomeAdmin />}></Route>
           <Route path="danh-sach-san-pham" element={<ProductsAdmin />}></Route>
           <Route path="danh-sach-nhan-su" element={<ManagerAcc />}></Route>
+          <Route path="*" element={<NotFoundAdmin />}></Route>
         </Route>
       </Routes>
     </div>
