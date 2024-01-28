@@ -5,10 +5,12 @@ import Icon_addcart from "/public/icon-product/icon_addcart.svg";
 import { act_addToCart } from "../../actions/actionTypes";
 
 const List_item = (data) => {
-  const addCart = useSelector((state) => state.addToCart);
+  // const addCart = useSelector((state) => state.addToCart);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [selectedIcon, setSelectedIcon] = useState();
   const [selectedItemId, setSelectedItemId] = useState();
+
   // thay đổi active của product
   const handleRadioChange = (e, itemId) => {
     setSelectedItemId(itemId);
@@ -19,9 +21,6 @@ const List_item = (data) => {
   const handleAdd = (id, img, name, price, num = 1) => {
     dispatch(act_addToCart(id, img, name, price, num));
   };
-
-  // điều hướng trang đến /id
-  const navigate = useNavigate();
 
   return (
     <div className="grid grid-cols-2 gap-x-5 gap-y-7 xl:grid-cols-4 md:grid-cols-3">

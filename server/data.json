@@ -1335,6 +1335,20 @@
       ],
       "price": 555000,
       "createTime": "2024-01-22T14:42:16.356Z"
+    },
+    {
+      "id": "TL996477",
+      "name": "a",
+      "email": "1",
+      "phone": "1",
+      "address": "1",
+      "city": "Thành phố Hà Nội",
+      "district": "Quận Ba Đình",
+      "ward": "Phường Phúc Xá",
+      "note": "",
+      "cart": [],
+      "price": 0,
+      "createTime": "2024-01-28T09:02:28.642Z"
     }
   ],
   "account": [
@@ -1342,20 +1356,13 @@
       "id": "00001",
       "username": "admin",
       "password": "1",
-      "name": "adminstrator2",
+      "name": "Nguyễn Văn A",
       "email": "phucnguyen09022003@gmail.com",
-      "img": "",
-      "status": false,
-      "createTime": "",
-      "checkpass": "1"
-    },
-    {
-      "id": "00002",
-      "username": "admin1",
-      "password": "1",
-      "name": "adminstrator3",
-      "email": "phucnguyen09022003@gmail.com",
-      "img": "",
+      "phone": "0987654321",
+      "date": "17/2/2003",
+      "position": "Sales Associate",
+      "branch": "273 Cổ Nhuế",
+      "img": "https://cdn.eva.vn/upload/2-2023/images/2023-05-12/z3-1683875580-257-width800height700.jpg",
       "status": false,
       "createTime": "",
       "checkpass": "1"

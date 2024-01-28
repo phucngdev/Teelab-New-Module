@@ -2,28 +2,56 @@ import { Button } from "antd";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import loadData from "../../../api/CallApi";
-
+import {
+  PlusCircleTwoTone,
+  DashOutlined,
+  MailOutlined,
+  PhoneOutlined,
+} from "@ant-design/icons";
 const ManagerAcc = () => {
   const [account, setAccount] = useState();
   useEffect(() => {
     loadData("account", setAccount);
   }, []);
 
-  const listAccount = account?.map((acc, index) => (
+  const listAccount = account?.map((acc) => (
     <div
-      key={index}
-      className="flex items-center justify-between border border-t-0 text-center"
+      key={acc.id}
+      className="flex flex-col items-center h-[300px] p-2 shadow-lg "
     >
-      <div className="border-x py-3 w-[10%]">{acc.id}</div>
-      <div className="border-x py-3 w-[15%]">{acc.name}</div>
-      <div className="border-x py-3 w-[30%]">{acc.email}</div>
-      <div className="border-x py-3 w-[15%]">{acc.username}</div>
-      <div className="border-x py-3 w-[15%]">{acc.password}</div>
-      <div className="flex items-center justify-around w-[15%]">
-        <Button className="bg-yellow-500 hover:bg-yellow-400">Sửa</Button>
-        <Button className="bg-red-500 hover:bg-red-400">
-          <span className="text-white">Xoá</span>
-        </Button>
+      <div className="w-full flex justify-end ">
+        <DashOutlined className="hover:bg-gray-100 p-1 cursor-pointer rounded-full" />
+      </div>
+      <img
+        className="w-[90px] h-[90px] rounded-full object-cover"
+        src={acc.img}
+        alt=""
+      />
+      <h3 className="text-base text-black font-bold mt-1">{acc.name}</h3>
+      <span className="text-sm text-gray-500 font-medium">{acc.position}</span>
+      <div className="mt-3 w-full flex-1 flex flex-col bg-slate-100 rounded-md p-2">
+        <div className="flex items-center justify-between">
+          <div className="w-[40%] flex flex-col">
+            <span className="text-sm text-gray-500">Chi nhánh</span>
+            <span className="text-sm text-gray-700 font-medium">
+              {acc.branch}
+            </span>
+          </div>
+          <div className="w-[40%] flex flex-col">
+            <span className="text-sm text-gray-500">Ngày sinh</span>
+            <span className="text-sm text-gray-700 font-medium">
+              {acc.date}
+            </span>
+          </div>
+        </div>
+        <div className="w-full flex items-center gap-2 mt-3 overflow-hidden">
+          <MailOutlined />
+          <span className="text-sm">{acc.email}</span>
+        </div>
+        <div className="flex items-center gap-2 mt-1">
+          <PhoneOutlined />
+          <span className="text-sm">{acc.phone}</span>
+        </div>
       </div>
     </div>
   ));
@@ -34,22 +62,17 @@ const ManagerAcc = () => {
         <title>TEELAB - Danh sách tài khoản</title>
       </Helmet>
       <div className="w-[calc(100%-320px)] ms-[320px] mt-[56px] p-[30px]">
-        <h3 className="text-2xl mb-3">danh sách tài khoản</h3>
         <div className="flex items-center justify-between">
-          <span className="">Tất cả tài khoản</span>
-          <Button type="button" className="bg-blue-600 hover:bg-blue-500">
-            <span className="text-white">Thêm mới tài khoản</span>
+          <h3 className="text-2xl mb-3">{account?.length} Employees</h3>
+          <Button
+            type="button"
+            className="border-2 border-green-900 hover:opacity-50 rounded flex items-center"
+          >
+            <PlusCircleTwoTone twoToneColor="#52c41a" />
+            <span className="text-green-900 ">Thêm mới nhân sự</span>
           </Button>
         </div>
-        <div className="flex items-center justify-between border text-center mt-3">
-          <div className="border-x py-3 w-[10%]">id</div>
-          <div className="border-x py-3 w-[15%]">Tên tài khoản</div>
-          <div className="border-x py-3 w-[30%]">Email</div>
-          <div className="border-x py-3 w-[15%]">Tên đăng nhập</div>
-          <div className="border-x py-3 w-[15%]">Mật khẩu</div>
-          <div className="border-x py-3 w-[15%]">Chức năng</div>
-        </div>
-        <div className="flex flex-col">{listAccount}</div>
+        <div className="grid grid-cols-4 gap-3 mt-3">{listAccount}</div>
       </div>
     </>
   );

@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import logo from "/logo.png";
 import { Button, Form, Input, message } from "antd";
 import { Helmet } from "react-helmet";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   CheckCircleTwoTone,
@@ -48,7 +48,6 @@ const Login = () => {
       (user) => user.username === username && user.password === password
     );
     if (findUser) {
-      console.log(findUser);
       localStorage.setItem("isLogin", JSON.stringify(findUser));
       success();
       setTimeout(() => {
@@ -68,7 +67,9 @@ const Login = () => {
       {contextHolder}
       <div className="flex justify-center items-center h-[100vh] bg-[url('https://www.mbbank.com.vn/images/hp_bg_special_product.png')]">
         <div className="flex w-[500] bg-white shadow-xl flex-col justify-center items-center gap-3 border p-3 rounded-md">
-          <img src={logo} alt="" />
+          <Link to="/">
+            <img src={logo} alt="" />
+          </Link>
           <h3 className="font-semibold text-xl py-2 border-b">
             Đăng nhập quản trị viên
           </h3>

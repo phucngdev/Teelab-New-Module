@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Navigate, Outlet } from "react-router-dom";
 import Header from "../components/admin/Header";
 import Sidebar from "../components/admin/Sidebar";
 
@@ -15,7 +15,7 @@ const Private = () => {
         <>
           <Header admin={admin}></Header>
           <Sidebar></Sidebar>
-          <Outlet />{" "}
+          <Outlet />
         </>
       ) : (
         <Navigate to="/dang-nhap" />

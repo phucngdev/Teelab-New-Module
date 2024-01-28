@@ -52,7 +52,7 @@ function App() {
         <Route path="/admin" element={<Private />}>
           <Route index element={<HomeAdmin />}></Route>
           <Route path="danh-sach-san-pham" element={<ProductsAdmin />}></Route>
-          <Route path="danh-sach-tai-khoan" element={<ManagerAcc />}></Route>
+          <Route path="danh-sach-nhan-su" element={<ManagerAcc />}></Route>
         </Route>
       </Routes>
     </div>

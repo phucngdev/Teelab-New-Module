@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, useLocation, Link, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "/logo.png";
 import {
   AppstoreOutlined,
@@ -48,10 +48,10 @@ const items = [
       <AccountBookOutlined />
     ),
   ]),
-  getItem("Tài khoản", "sub3", <MailOutlined />, [
+  getItem("Nhân sự", "sub3", <MailOutlined />, [
     getItem(
       <>
-        <NavLink to="/admin/danh-sach-tai-khoan">Danh sách tài khoản</NavLink>
+        <NavLink to="/admin/danh-sach-nhan-su">Danh sách nhân sự</NavLink>
       </>,
       "3",
       <AccountBookOutlined />
@@ -64,10 +64,25 @@ const items = [
       <AccountBookOutlined />
     ),
   ]),
+  getItem("Đơn hàng", "sub4", <MailOutlined />, [
+    getItem(
+      <>
+        <NavLink to="/admin/danh-sach-don-hang">Danh sách đơn hàng</NavLink>
+      </>,
+      "5",
+      <AccountBookOutlined />
+    ),
+    getItem(
+      <>
+        <NavLink to="/admin/tra-hang">Đơn trả hàng</NavLink>
+      </>,
+      "6",
+      <AccountBookOutlined />
+    ),
+  ]),
 ];
 
-// submenu keys of first level
-const rootSubmenuKeys = ["sub1", "sub2", "sub4"];
+const rootSubmenuKeys = ["sub1", "sub2", "sub3", "sub4"];
 const Sidebar = () => {
   const [openKeys, setOpenKeys] = useState(["sub1"]);
   const onOpenChange = (keys) => {
