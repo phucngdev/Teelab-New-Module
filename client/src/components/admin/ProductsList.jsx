@@ -29,7 +29,9 @@ const ProductsList = (data) => {
           key={index}
           className="flex items-center justify-between border-s text-center"
         >
-          <div className=" py-3 w-[10%]">{product.id}</div>
+          <Tooltip title="Mã sản phẩm">
+            <div className=" py-3 w-[10%]">{product.id}</div>
+          </Tooltip>
           <div className=" py-3 w-[15%]">
             <button>
               <Image

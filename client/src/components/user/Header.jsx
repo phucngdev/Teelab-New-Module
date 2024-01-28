@@ -118,7 +118,7 @@ const Header = () => {
   const formatOptionLabel = ({ value, label, imgSrc }) => (
     <div
       className="flex items-center gap-3 cursor-pointer"
-      onClick={() => navigate(`/${value}`)}
+      onClick={() => navigate(`/chi-tiet-san-pham/${value}`)}
     >
       <img src={imgSrc} alt={label} className="w-10 " />
       {label}
