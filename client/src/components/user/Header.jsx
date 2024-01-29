@@ -66,28 +66,12 @@ export const listMenu = menuItem.map((item, index) => (
 
 const Header = () => {
   const addCart = useSelector((state) => state.addToCart);
+  const [carts, setCarts] = useState(addCart);
   const [searchText, setSearcText] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
-
-  // const [cartLocal, setcartLocal] = useState(() => {
-  //   const carts = JSON.parse(localStorage.getItem("listcart")) || [];
-  //   return carts;
-  // });
-
-  // const [quantity, setQuantity] = useState(() => {
-  //   const quantityCart = cartLocal.reduce((sum, cart) => sum + cart.num, 0);
-  //   return quantityCart;
-  // });
-
-  // useEffect(() => {
-  //   const cartsUpdate = JSON.parse(localStorage.getItem("listcart")) || [];
-  //   const quantityCartUpdate = cartsUpdate.reduce(
-  //     (sum, cart) => sum + cart.num,
-  //     0
-  //   );
-  //   setcartLocal(cartsUpdate);
-  //   setQuantity(quantityCartUpdate);
-  // }, [JSON.parse(localStorage.getItem("toggle"))]);
+  useEffect(() => {
+    setCarts(addCart);
+  }, [addCart]);
 
   const handleClose = () => setShowMenu(false);
   const handleShow = () => setShowMenu(true);
@@ -125,9 +109,9 @@ const Header = () => {
     </div>
   );
 
-  const cartHover = addCart.map((cart, index) => (
+  const cartHover = carts?.map((cart, index) => (
     <div
-      onClick={() => navigate(`/${cart.id}`)}
+      onClick={() => navigate(`/chi-tiet-san-pham/${cart.id}`)}
       key={index}
       className="flex items-center justify-between gap-2 p-1 cursor-pointer rounded-md hover:bg-[#ededed]"
     >
@@ -154,14 +138,14 @@ const Header = () => {
             <div className="cart">
               <Link to="/gio-hang" className="">
                 <div className="w-4 h-4 flex items-center justify-center text-white text-xs bg-[#d64646] rounded-[100rem] absolute right-0">
-                  {addCart.length}
+                  {carts.length}
                 </div>
                 <img src={Icon_cart} className="h-full w-full" alt="" />
               </Link>
             </div>
             <div className="showcart rounded-sm shadow-lg bg-white absolute z-[99] top-[90%] right-0 hidden">
               <div className="w-[340px] max-h-[500px] overflow-scroll flex flex-col items-center  text-center p-2">
-                {addCart.length > 0 ? (
+                {carts.length > 0 ? (
                   <>{cartHover}</>
                 ) : (
                   <>

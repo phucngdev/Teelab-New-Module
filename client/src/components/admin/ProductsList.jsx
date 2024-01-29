@@ -41,7 +41,7 @@ const ProductsList = (data) => {
               />
             </button>
           </div>
-          <div className=" py-3 w-[29%]">{product.name}</div>
+          <div className=" py-3 w-[25%]">{product.name}</div>
           <Tooltip title="Giá bán">
             <div className=" py-3 w-[10%]">{product.price}</div>
           </Tooltip>
@@ -52,9 +52,9 @@ const ProductsList = (data) => {
             <div className=" py-3 w-[10%]">{product.price}</div>
           </Tooltip>
           <Tooltip title="Tồn kho">
-            <div className=" py-3 w-[8%]">{product?.quantity}</div>
+            <div className=" py-3 w-[10%]">{product?.quantity}</div>
           </Tooltip>
-          <div className="flex items-center justify-evenly w-[8%]">
+          <div className="flex items-center justify-evenly w-[10%]">
             <Tooltip title="Chỉnh sửa">
               <button>
                 <EditOutlined className="p-2 rounded-lg hover:bg-gray-200" />
@@ -89,12 +89,12 @@ const ProductsList = (data) => {
         <div className="flex-1 flex items-center justify-between h-full border-s">
           <div className="w-[10%] border-e">Mã sản phẩm</div>
           <div className="w-[15%] border-e">Ảnh</div>
-          <div className="w-[29%] border-e">Tên sản phẩm</div>
+          <div className="w-[25%] border-e">Tên sản phẩm</div>
           <div className="w-[10%] border-e">Giá bán</div>
           <div className="w-[10%] border-e">Giảm giá</div>
           <div className="w-[10%] border-e">Giá sau giảm</div>
-          <div className="w-[8%] border-e">Tồn kho</div>
-          <div className="w-[8%] border-s">Chức năng</div>
+          <div className="w-[10%] border-e">Tồn kho</div>
+          <div className="w-[10%]">Chức năng</div>
         </div>
       </div>
       <CheckboxGroup

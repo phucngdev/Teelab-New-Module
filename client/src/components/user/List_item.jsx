@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Icon_addcart from "/public/icon-product/icon_addcart.svg";
 import { act_addToCart } from "../../actions/actionTypes";
+import { message } from "antd";
+import { CheckCircleTwoTone } from "@ant-design/icons";
 
 const List_item = (data) => {
-  // const addCart = useSelector((state) => state.addToCart);
+  const carts = useSelector((state) => state.addToCart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [selectedIcon, setSelectedIcon] = useState();
@@ -17,9 +19,17 @@ const List_item = (data) => {
     setSelectedIcon(e.target.value);
   };
 
+  const confirm = () => {
+    message.success({
+      content: "Thêm vào giỏ hàng thành công",
+      icon: <CheckCircleTwoTone twoToneColor="#52c41a" />,
+    });
+  };
+
   // hàm click icon add
   const handleAdd = (id, img, name, price, num = 1) => {
     dispatch(act_addToCart(id, img, name, price, num));
+    confirm();
   };
 
   return (

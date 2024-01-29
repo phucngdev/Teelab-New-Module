@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
@@ -8,28 +8,30 @@ import FormatPrice from "../../../utils/formatPrice";
 import { Button, Modal } from "antd";
 import Icon_Incart from "/icon-header/icon_incart.svg";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  act_decrease,
+  act_deleteCart,
+  act_increase,
+} from "../../../actions/actionTypes";
 
 const Cart = () => {
-  const cart = useSelector((state) => state.addToCart);
+  let cart = useSelector((state) => state.addToCart);
   const dispatch = useDispatch();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [idDelete, setIdDelete] = useState(null);
+  const [itemIdToDelete, setItemIdToDelete] = useState(null);
 
   const showModal = (id) => {
-    setIdDelete(id);
     setIsModalOpen(true);
+    setItemIdToDelete(id);
   };
 
   // xoá sản phẩm
-  const handleRemove = () => {
-    const filterCart = cart.filter((job) => job.id !== idDelete);
-    // localStorage.setItem("listcart", JSON.stringify(filterCart));
-    // setcartLocal(filterCart);
-    // cart = filterCart;
+  const handleRemove = (idDelete) => {
+    dispatch(act_deleteCart(idDelete));
   };
   const handleOk = () => {
-    handleRemove();
+    handleRemove(itemIdToDelete);
     setIsModalOpen(false);
   };
   const handleCancel = () => {
@@ -39,16 +41,13 @@ const Cart = () => {
   const navigate = useNavigate();
 
   // hàm tăng giảm số lượng sản phẩm
-  const handleIscrease = (index) => {
-    const updatedCart = [...cart];
-    updatedCart[index].num += 1;
+  const handleIscrease = (id) => {
+    console.log(id);
+    dispatch(act_increase(id));
   };
 
-  const handleMinus = (index) => {
-    const updatedCart = [...cart];
-    if (updatedCart[index].num > 1) {
-      updatedCart[index].num -= 1;
-    }
+  const handleDecrease = (id) => {
+    dispatch(act_decrease(id));
   };
 
   // tính tổng tiền
@@ -92,7 +91,7 @@ const Cart = () => {
         <button
           className="px-2 border"
           type="button"
-          onClick={() => handleMinus(index)}
+          onClick={() => handleDecrease(cart.id)}
         >
           <FontAwesomeIcon icon={faMinus} />
         </button>
@@ -100,7 +99,7 @@ const Cart = () => {
         <button
           className="px-2 border"
           type="button"
-          onClick={() => handleIscrease(index)}
+          onClick={() => handleIscrease(cart.id)}
         >
           <FontAwesomeIcon icon={faPlus} />
         </button>

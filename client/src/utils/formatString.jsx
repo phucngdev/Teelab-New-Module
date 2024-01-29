@@ -1,5 +1,5 @@
 const FormatString = (item) => {
-  let numberPriceat = parseFloat(item.replace(/[^\d]/g, ""));
+  let numberPriceat = parseFloat(item?.replace(/[^\d]/g, ""));
   return numberPriceat;
 };
 
