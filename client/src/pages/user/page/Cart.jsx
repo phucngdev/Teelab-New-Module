@@ -5,7 +5,7 @@ import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { Helmet } from "react-helmet";
 import FormatString from "../../../utils/formatString";
 import FormatPrice from "../../../utils/formatPrice";
-import { Button, Modal } from "antd";
+import { Button, Modal, message } from "antd";
 import Icon_Incart from "/icon-header/icon_incart.svg";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -13,6 +13,7 @@ import {
   act_deleteCart,
   act_increase,
 } from "../../../actions/actionTypes";
+import { CheckCircleTwoTone } from "@ant-design/icons";
 
 const Cart = () => {
   let cart = useSelector((state) => state.addToCart);
@@ -29,6 +30,10 @@ const Cart = () => {
   // xoá sản phẩm
   const handleRemove = (idDelete) => {
     dispatch(act_deleteCart(idDelete));
+    message.success({
+      content: "Xoá thành công",
+      icon: <CheckCircleTwoTone twoToneColor="#ff0000" />,
+    });
   };
   const handleOk = () => {
     handleRemove(itemIdToDelete);

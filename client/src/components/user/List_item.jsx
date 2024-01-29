@@ -58,20 +58,38 @@ const List_item = (data) => {
               />
             </button>
           </div>
+          {item.quantity > 0 ? (
+            <>
+              <div className="icon-addcart absolute top-[10px] right-[15px] z-50 hidden animate-bounce">
+                <button
+                  className="btn-addcart w-[35px] h-[35px] border-0 shadow-none bg-[#696969] rounded-[50%] flex justify-center items-center"
+                  title="Thêm vào giỏ hàng"
+                  type="button"
+                  onClick={() =>
+                    handleAdd(
+                      item.id,
+                      item.img,
+                      item.name,
+                      item.price,
+                      item.num
+                    )
+                  }
+                >
+                  <img src={Icon_addcart} alt="" />
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="w-full text-center absolute z-[999] top-[30%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+                <span className="px-5 py-2 bg-black shadow-lg text-white ">
+                  SOLD OUT
+                </span>
+              </div>
+            </>
+          )}
           <div className="w-[46px] h-[18px] bg-[#d52220] absolute top-[15px] left-[15px] text-center text-xs text-white">
             {item.sale}
-          </div>
-          <div className="icon-addcart absolute top-[10px] right-[15px] z-50 hidden animate-bounce">
-            <button
-              className="btn-addcart w-[35px] h-[35px] border-0 shadow-none bg-[#696969] rounded-[50%] flex justify-center items-center"
-              title="Thêm vào giỏ hàng"
-              type="button"
-              onClick={() =>
-                handleAdd(item.id, item.img, item.name, item.price, item.num)
-              }
-            >
-              <img src={Icon_addcart} alt="" />
-            </button>
           </div>
           <div className="flex flex-col items-center">
             <div className="flex justify-center items-center gap-[10px] mb-[10px]">
