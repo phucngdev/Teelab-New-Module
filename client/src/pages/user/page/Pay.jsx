@@ -132,7 +132,7 @@ const Pay = () => {
         price: total,
         createTime: new Date(),
       };
-      PostDataToApi(newOrder);
+      PostDataToApi("order", newOrder);
       setNotifi(false);
       setIsModalOpen(true);
     }
