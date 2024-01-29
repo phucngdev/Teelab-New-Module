@@ -1,4 +1,4 @@
-import { Button, Image } from "antd";
+import { Button, Image, Modal } from "antd";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import loadData from "../../../api/CallApi";
@@ -8,12 +8,17 @@ import {
   MailOutlined,
   PhoneOutlined,
 } from "@ant-design/icons";
+import ModalEmployees from "../../../components/admin/ModalEmployees";
 
 const ManagerAcc = () => {
   const [account, setAccount] = useState();
   useEffect(() => {
     loadData("account", setAccount);
   }, []);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
 
   const listAccount = account?.map((acc) => (
     <div key={acc.id} className="flex flex-col items-center p-2 shadow-lg ">
@@ -69,11 +74,17 @@ const ManagerAcc = () => {
           <h3 className="text-2xl mb-3">{account?.length} Employees</h3>
           <Button
             type="button"
+            onClick={showModal}
             className="border-2 border-green-900 hover:opacity-50 rounded flex items-center"
           >
             <PlusCircleTwoTone twoToneColor="#52c41a" />
             <span className="text-green-900 ">Thêm mới nhân sự</span>
           </Button>
+          <ModalEmployees
+            isModalOpen={isModalOpen}
+            showModal={showModal}
+            setIsModalOpen={setIsModalOpen}
+          />
         </div>
         <div className="grid grid-cols-4 gap-3 mt-3">{listAccount}</div>
       </div>

@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Icon_addcart from "/public/icon-product/icon_addcart.svg";
 import { act_addToCart } from "../../actions/actionTypes";
-import { message } from "antd";
+import { Tooltip, message } from "antd";
 import { CheckCircleTwoTone } from "@ant-design/icons";
 
 const List_item = (data) => {
-  const carts = useSelector((state) => state.addToCart);
+  const carts = useSelector((state) => state.cartStore);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [selectedIcon, setSelectedIcon] = useState();
@@ -60,24 +60,25 @@ const List_item = (data) => {
           </div>
           {item.quantity > 0 ? (
             <>
-              <div className="icon-addcart absolute top-[10px] right-[15px] z-50 hidden animate-bounce">
-                <button
-                  className="btn-addcart w-[35px] h-[35px] border-0 shadow-none bg-[#696969] rounded-[50%] flex justify-center items-center"
-                  title="Thêm vào giỏ hàng"
-                  type="button"
-                  onClick={() =>
-                    handleAdd(
-                      item.id,
-                      item.img,
-                      item.name,
-                      item.price,
-                      item.num
-                    )
-                  }
-                >
-                  <img src={Icon_addcart} alt="" />
-                </button>
-              </div>
+              <Tooltip title="Thêm vào giỏ hàng">
+                <div className="icon-addcart absolute top-[10px] right-[15px] z-50 hidden animate-bounce">
+                  <button
+                    className="btn-addcart w-[35px] h-[35px] border-0 shadow-none bg-[#696969] rounded-[50%] flex justify-center items-center"
+                    type="button"
+                    onClick={() =>
+                      handleAdd(
+                        item.id,
+                        item.img,
+                        item.name,
+                        item.price,
+                        item.num
+                      )
+                    }
+                  >
+                    <img src={Icon_addcart} alt="" />
+                  </button>
+                </div>
+              </Tooltip>
             </>
           ) : (
             <>

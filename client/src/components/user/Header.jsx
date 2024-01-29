@@ -65,7 +65,7 @@ export const listMenu = menuItem.map((item, index) => (
 ));
 
 const Header = () => {
-  const addCart = useSelector((state) => state.addToCart);
+  const addCart = useSelector((state) => state.cartStore);
   const [carts, setCarts] = useState(addCart);
   const [searchText, setSearcText] = useState([]);
   const [showMenu, setShowMenu] = useState(false);

@@ -16,9 +16,11 @@ import FormatPrice from "../../../utils/formatPrice";
 import { InfoCircleTwoTone, CheckCircleTwoTone } from "@ant-design/icons";
 import { Modal, notification } from "antd";
 import PostDataToApi from "../../../api/postApi";
+import { useSelector } from "react-redux";
 
 const Pay = () => {
   const navigate = useNavigate();
+  const cart = useSelector((state) => state.cartStore);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalSucces, setIsModalSucces] = useState(false);
@@ -45,11 +47,6 @@ const Pay = () => {
     });
   };
 
-  const [cartLocal, setcartLocal] = useState(() => {
-    const listCart = JSON.parse(localStorage.getItem("listcart")) || [];
-    return listCart;
-  });
-
   const [parentAddressSelect, setParentAddressSelect] = useState({
     city: "",
     district: "",
@@ -57,12 +54,12 @@ const Pay = () => {
   });
 
   const [quantity, setQuantity] = useState(() => {
-    const quantityCart = cartLocal.reduce((sum, cart) => sum + cart.num, 0);
+    const quantityCart = cart.reduce((sum, cart) => sum + cart.num, 0);
     return quantityCart;
   });
 
   const calculateTotalPrice = () => {
-    return cartLocal.reduce((total, cartItem) => {
+    return cart.reduce((total, cartItem) => {
       const itemTotal = cartItem.num * FormatString(cartItem.price);
       return total + itemTotal;
     }, 0);
@@ -131,7 +128,7 @@ const Pay = () => {
         district: parentAddressSelect.district,
         ward: parentAddressSelect.ward,
         note: note,
-        cart: cartLocal,
+        cart: cart,
         price: total,
         createTime: new Date(),
       };
@@ -154,7 +151,7 @@ const Pay = () => {
     navigate("/");
   };
 
-  const printCart = cartLocal.map((cart) => (
+  const printCart = cart.map((cart) => (
     <div
       key={cart.id}
       className="border border-gray-500 rounded-lg p-2 flex gap-3 items-center justify-between"

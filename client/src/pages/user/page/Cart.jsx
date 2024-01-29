@@ -13,10 +13,13 @@ import {
   act_deleteCart,
   act_increase,
 } from "../../../actions/actionTypes";
-import { CheckCircleTwoTone } from "@ant-design/icons";
+import {
+  CheckCircleTwoTone,
+  ExclamationCircleTwoTone,
+} from "@ant-design/icons";
 
 const Cart = () => {
-  let cart = useSelector((state) => state.addToCart);
+  let cart = useSelector((state) => state.cartStore);
   const dispatch = useDispatch();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -66,7 +69,14 @@ const Cart = () => {
 
   // click thanh toán
   const handlePay = () => {
-    navigate("/gio-hang/thanh-toan");
+    if (cart.length > 0) {
+      navigate("/gio-hang/thanh-toan");
+    } else {
+      message.warning({
+        content: "Bạn chưa có sản phẩm nào trong giỏ hàng",
+        icon: <ExclamationCircleTwoTone twoToneColor="#FFCC33" />,
+      });
+    }
   };
 
   const printCart = cart.map((cart, index) => (
@@ -160,6 +170,7 @@ const Cart = () => {
               </div>
             </div>
             <button
+              type="button"
               onClick={handlePay}
               className="w-[360px] bg-black text-white py-2 rounded-sm hover:opacity-75 mt-1"
             >

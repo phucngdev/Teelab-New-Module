@@ -6,7 +6,7 @@ import {
 } from "../contains";
 
 const initialstate = [];
-export const addToCart = (state = initialstate, action) => {
+export const cartStore = (state = initialstate, action) => {
   switch (action.type) {
     case ATC_ADDTOCART:
       const { id, num } = action.payload;
