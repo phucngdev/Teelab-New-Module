@@ -82,7 +82,6 @@ const ManagerAcc = () => {
           </Button>
           <ModalEmployees
             isModalOpen={isModalOpen}
-            showModal={showModal}
             setIsModalOpen={setIsModalOpen}
           />
         </div>

@@ -22,6 +22,7 @@ import PublicCart from "./routes/PublicCart";
 import Public from "./routes/Public.jsx";
 import Private from "./routes/Private";
 import NotFoundAdmin from "./pages/private/page/NotFound";
+import Order from "./pages/private/page/Order.jsx";
 
 function App() {
   const location = useLocation();
@@ -54,6 +55,7 @@ function App() {
           <Route index element={<HomeAdmin />}></Route>
           <Route path="danh-sach-san-pham" element={<ProductsAdmin />}></Route>
           <Route path="danh-sach-nhan-su" element={<ManagerAcc />}></Route>
+          <Route path="danh-sach-don-hang" element={<Order />}></Route>
           <Route path="*" element={<NotFoundAdmin />}></Route>
         </Route>
       </Routes>

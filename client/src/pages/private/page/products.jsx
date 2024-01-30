@@ -2,6 +2,7 @@ import { Button, Tabs } from "antd";
 import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import ProductsList from "../../../components/admin/ProductsList";
+import ModalProduct from "../../../components/admin/ModalProduct";
 
 const ProductsAdmin = () => {
   const items = [
@@ -21,6 +22,10 @@ const ProductsAdmin = () => {
       children: <>{ProductsList("ao-thun")}</>,
     },
   ];
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
 
   return (
     <>
@@ -30,9 +35,17 @@ const ProductsAdmin = () => {
       <div className="w-[calc(100%-320px)] ms-[320px] mt-[56px] p-[30px]">
         <div className="flex items-center justify-between">
           <h3 className="text-2xl mb-3">Danh sách sản phẩm</h3>
-          <Button type="button" className="bg-blue-600 hover:bg-blue-500">
+          <Button
+            type="button"
+            onClick={showModal}
+            className="bg-blue-600 hover:bg-blue-500"
+          >
             <span className="text-white">Thêm mới sản phẩm</span>
           </Button>
+          <ModalProduct
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+          />
         </div>
         <Tabs defaultActiveKey="1" items={items} />
       </div>

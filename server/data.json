@@ -1267,99 +1267,75 @@
   ],
   "order": [
     {
-      "id": "TL258123",
-      "name": "phúc",
+      "id": "TL121695",
+      "name": "test",
       "email": "phucnguyen09022003@gmail.com",
-      "phone": "0987654321",
-      "address": "273",
+      "phone": "99999999",
+      "address": "test",
       "city": "Thành phố Hà Nội",
       "district": "Quận Ba Đình",
-      "ward": "Phường Phúc Xá",
-      "note": "123",
+      "ward": "Phường Trúc Bạch",
+      "note": "ghi chú",
       "cart": [
-        {
-          "id": 4,
-          "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/1-c3eb1db4-6cc5-4f09-820d-cdad25250a17.jpg?v=1697683787577",
-          "name": "Áo Thun Teelab Local Brand Unisex Sporty Line Shoulder TS202",
-          "price": "185.000đ",
-          "num": 4,
-          "createdTime": "2024-01-22T09:52:26.525Z"
-        },
         {
           "id": 3,
           "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/te9180-64ffkovk-1-yrw5-hinh-mat-truoc-0.jpg?v=1692005106000",
           "name": "Áo Babytee Local Brand Teelab Studio Baby Sheep Cute BT013",
           "price": "135.000đ",
-          "num": 2,
-          "createdTime": "2024-01-22T09:52:25.055Z"
+          "num": 2
         },
-        {
-          "id": 1,
-          "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/untitled-1-3b2d9877-716d-4d3d-8144-1452dee158f1.jpg?v=1693562410037",
-          "name": "Áo Thun Teelab Local Brand Unisex Percy Sport T-Shirt TS194",
-          "price": "199.000đ",
-          "num": 2,
-          "createdTime": "2024-01-22T08:43:19.039Z"
-        }
-      ],
-      "price": 1408000,
-      "createTime": "2024-01-22T11:44:32.093Z"
-    },
-    {
-      "id": "TL773682",
-      "name": "tú",
-      "email": "phucnguyen09022003@gmail.com",
-      "phone": "98989898",
-      "address": "225",
-      "city": "Thành phố Hà Nội",
-      "district": "Quận Bắc Từ Liêm",
-      "ward": "Phường Cổ Nhuế 2",
-      "note": "e ko có tiền",
-      "cart": [
         {
           "id": 2,
           "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/ts209.jpg?v=1695720506783",
           "name": "Áo Thun Teelab Local Brand Unisex The True Chill Isn’t In The Smoke TS209",
           "price": "185.000đ",
-          "num": 2,
-          "createdTime": "2024-01-22T14:41:32.947Z"
-        },
-        {
-          "id": 4,
-          "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/1-c3eb1db4-6cc5-4f09-820d-cdad25250a17.jpg?v=1697683787577",
-          "name": "Áo Thun Teelab Local Brand Unisex Sporty Line Shoulder TS202",
-          "price": "185.000đ",
-          "num": 1,
-          "createdTime": "2024-01-22T14:41:30.655Z"
+          "num": 1
         }
       ],
-      "price": 555000,
-      "createTime": "2024-01-22T14:42:16.356Z"
+      "price": 455000,
+      "status": 0,
+      "createTime": "Tue Jan 30 2024"
     },
     {
-      "id": "TL996477",
-      "name": "a",
-      "email": "1",
-      "phone": "1",
-      "address": "1",
-      "city": "Thành phố Hà Nội",
-      "district": "Quận Ba Đình",
-      "ward": "Phường Phúc Xá",
-      "note": "",
-      "cart": [],
-      "price": 0,
-      "createTime": "2024-01-28T09:02:28.642Z"
+      "id": "TL707107",
+      "name": "test2",
+      "email": "2@gmail.com",
+      "phone": "22222",
+      "address": "22222",
+      "city": "Tỉnh Cao Bằng",
+      "district": "Huyện Bảo Lâm",
+      "ward": "Xã Vĩnh Quang",
+      "note": "test 222",
+      "cart": [
+        {
+          "id": 6,
+          "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/untitled-1-00939f5e-77bb-406d-8ba8-5084c270d561.jpg?v=1692018472787",
+          "name": "Áo Thun Teelab Local Brand Unisex Wavy Line T-Shirt TS198",
+          "price": "199.000đ",
+          "num": 1
+        },
+        {
+          "id": 7,
+          "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/untitled-1-9abcf80a-4fae-481e-9fce-117d87612a68.jpg?v=1697719376890",
+          "name": "Áo Thun Teelab Local Brand Unisex Triple Line Basic TS210",
+          "price": "199.000đ",
+          "num": 1
+        }
+      ],
+      "price": 398000,
+      "status": 1,
+      "createTime": "12:28:12 30/1/2024"
     },
     {
-      "id": "TL757877",
-      "name": "abc",
-      "email": "abc@gmail.com",
-      "phone": "123456789",
-      "address": "abc 123",
-      "city": "Thành phố Hà Nội",
-      "district": "Quận Hoàn Kiếm",
-      "ward": "Phường Đồng Xuân",
-      "note": "abc",
+      "id": "TL318219",
+      "name": "test3",
+      "email": "phucnguyen09022003@gmail.com",
+      "phone": "33333",
+      "address": "33333",
+      "city": "Tỉnh Bắc Kạn",
+      "district": "Thành Phố Bắc Kạn",
+      "ward": "Xã Dương Quang",
+      "note": "test 3",
       "cart": [
         {
           "id": 2,
@@ -1370,7 +1346,8 @@
         }
       ],
       "price": 185000,
-      "createTime": "2024-01-29T12:48:31.480Z"
+      "status": 2,
+      "createTime": "12:33:13 30/1/2024"
     }
   ],
   "account": [

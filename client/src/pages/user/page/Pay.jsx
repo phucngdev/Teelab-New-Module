@@ -130,7 +130,8 @@ const Pay = () => {
         note: note,
         cart: cart,
         price: total,
-        createTime: new Date(),
+        status: 0,
+        createTime: new Date().toLocaleString(),
       };
       PostDataToApi("order", newOrder);
       setNotifi(false);
