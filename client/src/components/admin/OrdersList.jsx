@@ -6,14 +6,14 @@ import {
   EditOutlined,
   EyeTwoTone,
 } from "@ant-design/icons";
-import { Checkbox, Tooltip } from "antd";
+import { Checkbox, Tooltip, DatePicker } from "antd";
 import FormatPrice from "../../utils/formatPrice";
 
-const OrdersList = (data) => {
+const OrdersList = (status) => {
   const [order, setOrder] = useState();
   useEffect(() => {
-    loadData(data, setOrder);
-  }, [data]);
+    loadData("order", setOrder);
+  }, []);
   const CheckboxGroup = Checkbox.Group;
   const [checkedList, setCheckedList] = useState([]);
   const checkAll = order?.length === checkedList?.length;
@@ -26,7 +26,9 @@ const OrdersList = (data) => {
     setCheckedList(e.target.checked ? order?.map((order) => order.id) : []);
   };
 
-  const checkboxOptions = order?.map((order) => ({
+  const checkboxOptions = (
+    status == "all" ? order : order?.filter((st) => st.status === status)
+  )?.map((order) => ({
     label: (
       <>
         <div
@@ -36,19 +38,25 @@ const OrdersList = (data) => {
           <div className="w-[10%] border-e">{order.id}</div>
           <div className="w-[15%] border-e">{order.name}</div>
           <div className="w-[11%] border-e">{order.phone}</div>
-          <div className="w-[11%] border-e">
+          <div className="w-[14%] border-e">
             {order.status > 1 ? (
-              <span className="text-green-600">Hoàn thành</span>
+              <span className="text-green-600 bg-green-200 py-1 px-2 rounded-xl">
+                Hoàn thành
+              </span>
             ) : order.status < 1 ? (
-              <span className="text-red-600">Chờ xử lý</span>
+              <span className="text-red-600 bg-red-200 py-1 px-2 rounded-xl">
+                Chờ xử lý
+              </span>
             ) : (
-              <span className="text-yellow-600">Vận chuyển</span>
+              <span className="text-yellow-600 bg-yellow-200 py-1 px-2 rounded-xl">
+                Vận chuyển
+              </span>
             )}
           </div>
           <div className="w-[11%] border-e">{order.note}</div>
           <div className="w-[14%] border-e">{order.createTime}</div>
           <div className="w-[11%] border-e">{FormatPrice(order.price)}</div>
-          <div className="w-[17%] flex items-center justify-evenly">
+          <div className="w-[14%] flex items-center justify-evenly">
             <Tooltip title="Xem chi tiết">
               <button>
                 <EyeTwoTone className="p-2 rounded-lg hover:bg-blue-200" />
@@ -80,7 +88,7 @@ const OrdersList = (data) => {
   return (
     <>
       <div className="flex items-center gap-2 border border-b-0 text-center mt-3">
-        <div className="py-3 ">
+        <div className="py-3">
           <Checkbox
             className="border-0"
             indeterminate={indeterminate}
@@ -92,19 +100,20 @@ const OrdersList = (data) => {
           <div className="w-[10%] border-e">Mã đơn</div>
           <div className="w-[15%] border-e">Họ tên</div>
           <div className="w-[11%] border-e">Điện thoại</div>
-          <div className="w-[11%] border-e">Trang thái</div>
+          <div className="w-[14%] border-e">Trang thái</div>
           <div className="w-[11%] border-e">Ghi chú</div>
           <div className="w-[14%] border-e">Ngày tạo</div>
           <div className="w-[11%] border-e">Tổng tiền</div>
-          <div className="w-[17%]">Quản lý</div>
+          <div className="w-[14%]">Quản lý</div>
         </div>
       </div>
-
-      <CheckboxGroup
-        options={checkboxOptions}
-        value={checkedList}
-        onChange={onChange}
-      />
+      <div className="flex flex-col gap-1">
+        <CheckboxGroup
+          options={checkboxOptions}
+          value={checkedList}
+          onChange={onChange}
+        />
+      </div>
     </>
   );
 };

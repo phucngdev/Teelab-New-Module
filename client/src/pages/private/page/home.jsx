@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import {
   FundTwoTone,
@@ -10,8 +10,19 @@ import {
 import FormatPrice from "../../../utils/formatPrice";
 import "chart.js/auto";
 import { Line, Bar, Doughnut } from "react-chartjs-2";
+import loadData from "../../../api/CallApi";
+import { reducers } from "../../../reducers/index";
+import FormatString from "../../../utils/formatString";
 
 const HomeAdmin = () => {
+  const [order, setOrder] = useState();
+  useEffect(() => {
+    loadData("order", setOrder);
+  }, []);
+  const totals = order?.reduce((total, order) => {
+    return total + order.price;
+  }, 0);
+
   const main = [
     {
       id: 1,
@@ -25,15 +36,15 @@ const HomeAdmin = () => {
       id: 2,
       title: "Doanh thu",
       bg_item: "bg-[#716caf]",
-      data: 100000,
-      last_data: 2000,
+      data: FormatPrice(totals),
+      last_data: FormatPrice(2000),
       icon: CreditCardTwoTone,
     },
     {
       id: 3,
       title: "Đơn hàng",
       bg_item: "bg-[#32b0df]",
-      data: 3000,
+      data: order?.length,
       last_data: 4000,
       icon: ShoppingTwoTone,
     },
@@ -55,9 +66,7 @@ const HomeAdmin = () => {
       <div className="flex flex-col gap-2 max-w-[60%]">
         <h3 className="text-white">{item.title}</h3>
         <div className="flex items-center gap-2">
-          <h2 className="font-semibold text-xl text-white">
-            {item.id === 2 ? FormatPrice(item.data) : item.data}
-          </h2>
+          <h2 className="font-semibold text-xl text-white">{item.data}</h2>
           {item.data > item.last_data ? (
             <UpCircleTwoTone twoToneColor="#52c41a" />
           ) : (
