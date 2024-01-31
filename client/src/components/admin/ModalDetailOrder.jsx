@@ -17,7 +17,7 @@ const ModalDetailOrder = ({ isModalOpen, setIsModalOpen, detailOrder }) => {
       title: "Hoàn thành đơn hàng",
     },
   ];
-  const [current, setCurrent] = useState(detailOrder?.status);
+  //   const [current, setCurrent] = useState(detailOrder?.status);
 
   const next = () => {
     detailOrder?.status + 1;
