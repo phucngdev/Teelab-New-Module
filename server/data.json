@@ -1354,7 +1354,7 @@
     {
       "id": "00001",
       "username": "admin",
-      "password": "1",
+      "password": "2",
       "name": "Nguyễn Văn A",
       "email": "phucnguyen09022003@gmail.com",
       "phone": "0987654321",
@@ -1362,7 +1362,8 @@
       "position": "Sales Associate",
       "branch": "273 Cổ Nhuế",
       "img": "https://cdn.eva.vn/upload/2-2023/images/2023-05-12/z3-1683875580-257-width800height700.jpg",
-      "createTime": ""
+      "createTime": "",
+      "checkpass": "2"
     },
     {
       "id": "TL523677",

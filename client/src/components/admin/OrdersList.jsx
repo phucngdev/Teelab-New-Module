@@ -6,10 +6,17 @@ import {
   EditOutlined,
   EyeTwoTone,
 } from "@ant-design/icons";
-import { Checkbox, Tooltip, DatePicker } from "antd";
+import { Checkbox, Tooltip } from "antd";
 import FormatPrice from "../../utils/formatPrice";
+import ModalDetailOrder from "./ModalDetailOrder";
 
 const OrdersList = (status) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [detailOrder, setDetailOrder] = useState();
+  const showModal = (order) => {
+    setDetailOrder(order);
+    setIsModalOpen(true);
+  };
   const [order, setOrder] = useState();
   useEffect(() => {
     loadData("order", setOrder);
@@ -40,15 +47,15 @@ const OrdersList = (status) => {
           <div className="w-[11%] border-e">{order.phone}</div>
           <div className="w-[14%] border-e">
             {order.status > 1 ? (
-              <span className="text-green-600 bg-green-200 py-1 px-2 rounded-xl">
+              <span className="text-green-600 bg-green-200 py-2 px-3 rounded-xl">
                 Hoàn thành
               </span>
             ) : order.status < 1 ? (
-              <span className="text-red-600 bg-red-200 py-1 px-2 rounded-xl">
+              <span className="text-red-600 bg-red-200 py-2 px-3 rounded-xl">
                 Chờ xử lý
               </span>
             ) : (
-              <span className="text-yellow-600 bg-yellow-200 py-1 px-2 rounded-xl">
+              <span className="text-blue-600 bg-blue-200 py-2 px-3 rounded-xl">
                 Vận chuyển
               </span>
             )}
@@ -58,7 +65,7 @@ const OrdersList = (status) => {
           <div className="w-[11%] border-e">{FormatPrice(order.price)}</div>
           <div className="w-[14%] flex items-center justify-evenly">
             <Tooltip title="Xem chi tiết">
-              <button>
+              <button onClick={() => showModal(order)}>
                 <EyeTwoTone className="p-2 rounded-lg hover:bg-blue-200" />
               </button>
             </Tooltip>
@@ -87,6 +94,11 @@ const OrdersList = (status) => {
 
   return (
     <>
+      <ModalDetailOrder
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        detailOrder={detailOrder}
+      />
       <div className="flex items-center gap-2 border border-b-0 text-center mt-3">
         <div className="py-3">
           <Checkbox

@@ -82,6 +82,7 @@ const Header = ({ admin }) => {
               setOpenUpdateAcc={setOpenUpdateAcc}
               setOpenUpdate={setOpenUpdate}
               setOpenCheckPass={setOpenCheckPass}
+              confirm={confirm}
             ></SettingAcc>
           </Drawer>
           <Popconfirm

@@ -1,4 +1,4 @@
-import { Button, Image, Modal } from "antd";
+import { Button, Image, Modal, Popover } from "antd";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import loadData from "../../../api/CallApi";
@@ -23,7 +23,20 @@ const ManagerAcc = () => {
   const listAccount = account?.map((acc) => (
     <div key={acc.id} className="flex flex-col items-center p-2 shadow-lg ">
       <div className="w-full flex justify-end ">
-        <DashOutlined className="hover:bg-gray-100 p-1 cursor-pointer rounded-full" />
+        <Popover
+          content={
+            <>
+              <div>
+                <p>Content</p>
+                <p>Content</p>
+              </div>
+            </>
+          }
+          title="Title"
+          trigger="click"
+        >
+          <DashOutlined className="hover:bg-gray-100 p-1 cursor-pointer rounded-full" />
+        </Popover>
       </div>
       <Image
         src={acc.img}

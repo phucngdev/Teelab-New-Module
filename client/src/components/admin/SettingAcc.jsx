@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { message, Drawer, Input, Button } from "antd";
+import { message, Drawer, Input, Button, Modal } from "antd";
 import {
   ExclamationCircleTwoTone,
   CheckCircleTwoTone,
@@ -19,6 +19,7 @@ const SettingAcc = ({
   setOpenUpdateAcc,
   setOpenUpdate,
   setOpenCheckPass,
+  confirm,
 }) => {
   const [checkPass, setCheckPass] = useState("");
   const [newInfo, setNewInfo] = useState({
@@ -30,6 +31,14 @@ const SettingAcc = ({
     name: `${admin.name}`,
     email: `${admin.email}`,
   });
+  const success = () => {
+    Modal.success({
+      content: "Vui lòng đăng nhập lại",
+      onOk() {
+        confirm();
+      },
+    });
+  };
   const handleOpenUpdateAcc = () => {
     setOpenUpdateAcc(true);
   };
@@ -87,6 +96,7 @@ const SettingAcc = ({
     });
     PatchDataToApi(newInfo, admin.id);
     setOpenUpdate(false);
+    success();
   };
   const handleCancelUpdate = () => {
     setOpenUpdate(false);
