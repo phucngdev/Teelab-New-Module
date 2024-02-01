@@ -52,7 +52,25 @@ const ProductsList = (data) => {
             <div className=" py-3 w-[10%]">{product.price}</div>
           </Tooltip>
           <Tooltip title="Tồn kho">
-            <div className=" py-3 w-[10%]">{product?.quantity}</div>
+            {product?.quantity > 50 ? (
+              <div className=" py-3 w-[10%] ">
+                <span className="p-3 rounded-xl text-green-600 bg-green-200">
+                  {product?.quantity}
+                </span>
+              </div>
+            ) : product?.quantity > 20 ? (
+              <div className=" py-3 w-[10%]">
+                <span className="p-3 rounded-xl text-yellow-600 bg-yellow-200">
+                  {product?.quantity}
+                </span>
+              </div>
+            ) : (
+              <div className=" py-3 w-[10%] ">
+                <span className="p-3 rounded-xl text-red-600 bg-red-200">
+                  {product?.quantity}
+                </span>
+              </div>
+            )}
           </Tooltip>
           <div className="flex items-center justify-evenly w-[10%]">
             <Tooltip title="Chỉnh sửa">

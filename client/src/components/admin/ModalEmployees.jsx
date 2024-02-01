@@ -10,7 +10,7 @@ import { Button, Modal, message } from "antd";
 import upload from "../../firebase/firebase.config";
 import PostDataToApi from "../../api/postApi";
 
-const ModalEmployees = ({ isModalOpen, setIsModalOpen }) => {
+const ModalEmployees = ({ isModalOpen, setIsModalOpen, setReloadOrders }) => {
   const [info, setInfo] = useState({
     id: "",
     username: "",
@@ -103,6 +103,7 @@ const ModalEmployees = ({ isModalOpen, setIsModalOpen }) => {
         content: "Thêm mới thành công",
         icon: <CheckCircleTwoTone twoToneColor="#52c41a" />,
       });
+      setReloadOrders((prev) => !prev);
     }
   };
   return (

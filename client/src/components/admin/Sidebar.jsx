@@ -80,6 +80,22 @@ const items = [
       <AccountBookOutlined />
     ),
   ]),
+  getItem("Báo cáo", "sub5", <MailOutlined />, [
+    getItem(
+      <>
+        <NavLink to="/admin/">Báo cáo chấm công</NavLink>
+      </>,
+      "7",
+      <AccountBookOutlined />
+    ),
+    getItem(
+      <>
+        <NavLink to="/admin/">Bảng lương</NavLink>
+      </>,
+      "8",
+      <AccountBookOutlined />
+    ),
+  ]),
 ];
 
 const rootSubmenuKeys = ["sub1", "sub2", "sub3", "sub4"];

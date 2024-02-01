@@ -876,7 +876,7 @@
       "name": "Áo Thun Teelab Local Brand Unisex Percy Sport T-Shirt TS194",
       "price": "199.000đ",
       "priceBefore": "350.000đ",
-      "quantity": 0,
+      "quantity": 100,
       "material": "Cotton",
       "form": "Oversize",
       "design": "In cao thành"
@@ -966,7 +966,7 @@
       "name": "Áo Babytee Local Brand Teelab Studio Baby Sheep Cute BT013",
       "price": "135.000đ",
       "priceBefore": "250.000đ",
-      "quantity": 10,
+      "quantity": 30,
       "material": "Cotton",
       "form": "Oversize",
       "design": "In Trame"
@@ -1387,6 +1387,32 @@
       "position": "chăn bò",
       "branch": "Việt Nam",
       "img": "https://firebasestorage.googleapis.com/v0/b/teelab-fab2c.appspot.com/o/admin%2FA%CC%89nh%20ma%CC%80n%20hi%CC%80nh%202024-01-30%20lu%CC%81c%2015.09.10.png?alt=media&token=6c8898c1-9c5a-49e2-813f-b178792f5c9d"
+    },
+    {
+      "id": "TL811709",
+      "img": "https://firebasestorage.googleapis.com/v0/b/teelab-fab2c.appspot.com/o/admin%2Femi.jpeg?alt=media&token=46d4c6a0-07fa-4603-a417-5650ad721ca4",
+      "username": "emi",
+      "password": "1",
+      "name": "emi sẹc xi",
+      "email": "email@gmail.com",
+      "phone": "0123456789",
+      "date": "20/01/2003",
+      "address": "việt nam",
+      "position": "diễn viên sẹc",
+      "branch": "trên giường"
+    },
+    {
+      "id": "TL558202",
+      "username": "emi2",
+      "password": "1",
+      "name": "emi 2",
+      "email": "emi@gmail.com",
+      "phone": "0987654321",
+      "date": "29/03/2004",
+      "address": "nhật bản",
+      "position": "diễn viên ú ớ",
+      "branch": "Nhật bản",
+      "img": "https://firebasestorage.googleapis.com/v0/b/teelab-fab2c.appspot.com/o/admin%2Femi2.webp?alt=media&token=bf744cbb-8976-4055-8d22-65fc8986e2c5"
     }
   ]
 }

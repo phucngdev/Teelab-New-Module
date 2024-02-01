@@ -12,9 +12,11 @@ import ModalEmployees from "../../../components/admin/ModalEmployees";
 
 const ManagerAcc = () => {
   const [account, setAccount] = useState();
+  const [reloadOrders, setReloadOrders] = useState(false);
+
   useEffect(() => {
     loadData("account", setAccount);
-  }, []);
+  }, [reloadOrders]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -32,7 +34,7 @@ const ManagerAcc = () => {
               </div>
             </>
           }
-          title="Title"
+          title="Chức năng"
           trigger="click"
         >
           <DashOutlined className="hover:bg-gray-100 p-1 cursor-pointer rounded-full" />
@@ -96,6 +98,7 @@ const ManagerAcc = () => {
           <ModalEmployees
             isModalOpen={isModalOpen}
             setIsModalOpen={setIsModalOpen}
+            setReloadOrders={setReloadOrders}
           />
         </div>
         <div className="grid grid-cols-4 gap-3 mt-3">{listAccount}</div>
