@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const GetApi = (id, set) => {
+const GetApiOrder = (id, set) => {
   axios
-    .get(`http://localhost:8080/order?id=${id}`)
+    .get(`http://localhost:8080/order/${id}`)
     .then((response) => set(response.data))
     .catch((error) => console.log(error));
 };
 
-export default GetApi;
+export default GetApiOrder;

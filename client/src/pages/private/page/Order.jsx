@@ -1,10 +1,8 @@
 import React, { useRef, useState } from "react";
 import OrdersList from "../../../components/admin/OrdersList";
 import { Helmet } from "react-helmet";
-import { Button, DatePicker, Divider, Input, Select, Space, Tabs } from "antd";
-import { PlusCircleTwoTone, PlusOutlined } from "@ant-design/icons";
-import ProductsList from "../../../components/admin/ProductsList";
-import { spaceChildren } from "antd/es/button";
+import { Button, DatePicker, Tabs } from "antd";
+import { PlusCircleTwoTone } from "@ant-design/icons";
 
 const Order = () => {
   const items = [
@@ -20,13 +18,18 @@ const Order = () => {
     },
     {
       key: "3",
-      label: "Đang vận chuyển",
+      label: "Đang chuẩn bị",
       children: <>{OrdersList(1)}</>,
     },
     {
       key: "4",
-      label: "Hoàn thành",
+      label: "Vận chuyển",
       children: <>{OrdersList(2)}</>,
+    },
+    {
+      key: "5",
+      label: "Hoàn thành",
+      children: <>{OrdersList(3)}</>,
     },
   ];
 

@@ -1267,21 +1267,28 @@
   ],
   "order": [
     {
-      "id": "TL121695",
-      "name": "test",
-      "email": "phucnguyen09022003@gmail.com",
-      "phone": "99999999",
-      "address": "test",
+      "id": "TL842316",
+      "name": "test 2",
+      "email": "abc@gamil.com",
+      "phone": "123",
+      "address": "abc",
       "city": "Thành phố Hà Nội",
       "district": "Quận Ba Đình",
-      "ward": "Phường Trúc Bạch",
-      "note": "ghi chú",
+      "ward": "Phường Phúc Xá",
+      "note": "abc abc",
       "cart": [
         {
           "id": 3,
           "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/te9180-64ffkovk-1-yrw5-hinh-mat-truoc-0.jpg?v=1692005106000",
           "name": "Áo Babytee Local Brand Teelab Studio Baby Sheep Cute BT013",
           "price": "135.000đ",
+          "num": 3
+        },
+        {
+          "id": 4,
+          "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/1-c3eb1db4-6cc5-4f09-820d-cdad25250a17.jpg?v=1697683787577",
+          "name": "Áo Thun Teelab Local Brand Unisex Sporty Line Shoulder TS202",
+          "price": "185.000đ",
           "num": 2
         },
         {
@@ -1289,72 +1296,49 @@
           "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/ts209.jpg?v=1695720506783",
           "name": "Áo Thun Teelab Local Brand Unisex The True Chill Isn’t In The Smoke TS209",
           "price": "185.000đ",
-          "num": 1
-        }
-      ],
-      "price": 455000,
-      "status": 0,
-      "createTime": "Tue Jan 30 2024"
-    },
-    {
-      "id": "TL707107",
-      "name": "test2",
-      "email": "2@gmail.com",
-      "phone": "22222",
-      "address": "22222",
-      "city": "Tỉnh Cao Bằng",
-      "district": "Huyện Bảo Lâm",
-      "ward": "Xã Vĩnh Quang",
-      "note": "test 222",
-      "cart": [
-        {
-          "id": 6,
-          "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/untitled-1-00939f5e-77bb-406d-8ba8-5084c270d561.jpg?v=1692018472787",
-          "name": "Áo Thun Teelab Local Brand Unisex Wavy Line T-Shirt TS198",
-          "price": "199.000đ",
-          "num": 1
+          "num": 2
         },
         {
           "id": 7,
           "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/untitled-1-9abcf80a-4fae-481e-9fce-117d87612a68.jpg?v=1697719376890",
           "name": "Áo Thun Teelab Local Brand Unisex Triple Line Basic TS210",
           "price": "199.000đ",
-          "num": 1
+          "num": 2
         }
       ],
-      "price": 398000,
-      "status": 1,
-      "createTime": "12:28:12 30/1/2024"
+      "price": 1563000,
+      "status": 3,
+      "createTime": "19:34:31 1/2/2024"
     },
     {
-      "id": "TL318219",
-      "name": "test3",
-      "email": "phucnguyen09022003@gmail.com",
-      "phone": "33333",
-      "address": "33333",
-      "city": "Tỉnh Bắc Kạn",
-      "district": "Thành Phố Bắc Kạn",
-      "ward": "Xã Dương Quang",
-      "note": "test 3",
+      "id": "TL569730",
+      "name": "test",
+      "email": "1",
+      "phone": "1",
+      "address": "1",
+      "city": "Thành phố Hà Nội",
+      "district": "Quận Ba Đình",
+      "ward": "Phường Vĩnh Phúc",
+      "note": "",
       "cart": [
         {
-          "id": 2,
-          "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/ts209.jpg?v=1695720506783",
-          "name": "Áo Thun Teelab Local Brand Unisex The True Chill Isn’t In The Smoke TS209",
-          "price": "185.000đ",
+          "id": 5,
+          "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/1-26653769-bf15-498a-bfec-cfe0f350a14c.jpg?v=1692025569233",
+          "name": "Áo Thun Teelab Local Brand Unisex Love Is In The Air TS199",
+          "price": "199.000đ",
           "num": 1
         }
       ],
-      "price": 185000,
-      "status": 2,
-      "createTime": "12:33:13 30/1/2024"
+      "price": 219000,
+      "status": 1,
+      "createTime": "19:38:12 1/2/2024"
     }
   ],
   "account": [
     {
       "id": "00001",
       "username": "admin",
-      "password": "2",
+      "password": "1",
       "name": "Nguyễn Văn A",
       "email": "phucnguyen09022003@gmail.com",
       "phone": "0987654321",
@@ -1363,7 +1347,7 @@
       "branch": "273 Cổ Nhuế",
       "img": "https://cdn.eva.vn/upload/2-2023/images/2023-05-12/z3-1683875580-257-width800height700.jpg",
       "createTime": "",
-      "checkpass": "2"
+      "checkpass": "1"
     },
     {
       "id": "TL523677",

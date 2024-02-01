@@ -6,21 +6,38 @@ import {
   EditOutlined,
   EyeTwoTone,
 } from "@ant-design/icons";
-import { Checkbox, Tooltip } from "antd";
+import { Checkbox, Popconfirm, Tooltip, message } from "antd";
 import FormatPrice from "../../utils/formatPrice";
 import ModalDetailOrder from "./ModalDetailOrder";
+import deleteApiOrder from "../../api/deleteOrder";
 
 const OrdersList = (status) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [detailOrder, setDetailOrder] = useState();
-  const showModal = (order) => {
-    setDetailOrder(order);
+  const [detailOrderId, setDetailOrderId] = useState();
+  const [reloadOrders, setReloadOrders] = useState(false);
+  const showModal = (id) => {
+    setDetailOrderId(id);
     setIsModalOpen(true);
   };
   const [order, setOrder] = useState();
   useEffect(() => {
     loadData("order", setOrder);
-  }, []);
+  }, [isModalOpen, reloadOrders]);
+
+  const confirm = (id) => {
+    deleteOrder(id);
+    message.success("Xoá đơn hàng thành công");
+  };
+  const cancel = () => {
+    message.error("Huỷ thành công");
+  };
+  const deleteOrder = async (id) => {
+    if (id) {
+      await deleteApiOrder(id);
+      setReloadOrders((prev) => !prev);
+    }
+  };
+
   const CheckboxGroup = Checkbox.Group;
   const [checkedList, setCheckedList] = useState([]);
   const checkAll = order?.length === checkedList?.length;
@@ -46,17 +63,21 @@ const OrdersList = (status) => {
           <div className="w-[15%] border-e">{order.name}</div>
           <div className="w-[11%] border-e">{order.phone}</div>
           <div className="w-[14%] border-e">
-            {order.status > 1 ? (
-              <span className="text-green-600 bg-green-200 py-2 px-3 rounded-xl">
-                Hoàn thành
-              </span>
-            ) : order.status < 1 ? (
-              <span className="text-red-600 bg-red-200 py-2 px-3 rounded-xl">
+            {order?.status === 0 ? (
+              <span className="text-red-600 bg-red-200 py-2 px-3 rounded-lg">
                 Chờ xử lý
               </span>
-            ) : (
-              <span className="text-blue-600 bg-blue-200 py-2 px-3 rounded-xl">
+            ) : order?.status === 1 ? (
+              <span className="text-yellow-600 bg-yellow-200 py-2 px-3 rounded-lg">
+                Xác nhận
+              </span>
+            ) : order?.status === 2 ? (
+              <span className="text-blue-600 bg-blue-200 py-2 px-3 rounded-lg">
                 Vận chuyển
+              </span>
+            ) : (
+              <span className="text-green-600 bg-green-200 py-2 px-3 rounded-lg">
+                Hoàn thành
               </span>
             )}
           </div>
@@ -65,7 +86,7 @@ const OrdersList = (status) => {
           <div className="w-[11%] border-e">{FormatPrice(order.price)}</div>
           <div className="w-[14%] flex items-center justify-evenly">
             <Tooltip title="Xem chi tiết">
-              <button onClick={() => showModal(order)}>
+              <button onClick={() => showModal(order.id)}>
                 <EyeTwoTone className="p-2 rounded-lg hover:bg-blue-200" />
               </button>
             </Tooltip>
@@ -78,12 +99,21 @@ const OrdersList = (status) => {
               </button>
             </Tooltip>
             <Tooltip title="Xoá">
-              <button>
-                <DeleteTwoTone
-                  className="p-2 rounded-lg hover:bg-red-200"
-                  twoToneColor="#ff0000"
-                />
-              </button>
+              <Popconfirm
+                title="Xoá đơn hàng?"
+                description="Bạn chắc chắn muốn xoá?"
+                onConfirm={() => confirm(order.id)}
+                onCancel={cancel}
+                okText="Xoá"
+                cancelText="Huỷ"
+              >
+                <button>
+                  <DeleteTwoTone
+                    className="p-2 rounded-lg hover:bg-red-200"
+                    twoToneColor="#ff0000"
+                  />
+                </button>
+              </Popconfirm>
             </Tooltip>
           </div>
         </div>
@@ -97,7 +127,7 @@ const OrdersList = (status) => {
       <ModalDetailOrder
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
-        detailOrder={detailOrder}
+        detailOrderId={detailOrderId}
       />
       <div className="flex items-center gap-2 border border-b-0 text-center mt-3">
         <div className="py-3">

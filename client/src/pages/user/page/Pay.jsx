@@ -129,7 +129,7 @@ const Pay = () => {
         ward: parentAddressSelect.ward,
         note: note,
         cart: cart,
-        price: total,
+        price: total + 20000,
         status: 0,
         createTime: new Date().toLocaleString(),
       };
