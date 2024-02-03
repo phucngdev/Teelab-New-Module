@@ -1,10 +1,12 @@
-import { Button, Tabs } from "antd";
+import { Button, Input, Tabs } from "antd";
 import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import ProductsList from "../../../components/admin/ProductsList";
 import ModalProduct from "../../../components/admin/ModalProduct";
 
+const { Search } = Input;
 const ProductsAdmin = () => {
+  const [search, setSearch] = useState("");
   const items = [
     {
       key: "1",
@@ -33,8 +35,16 @@ const ProductsAdmin = () => {
         <title>TEELAB - Danh sách sản phẩm</title>
       </Helmet>
       <div className="w-[calc(100%-320px)] ms-[320px] mt-[56px] p-[30px]">
-        <div className="flex items-center justify-between">
-          <h3 className="text-2xl mb-3">Danh sách sản phẩm</h3>
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-3">
+            <h3 className=" text-2xl whitespace-nowrap">Danh sách sản phẩm</h3>
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Tìm kiếm"
+            />
+          </div>
           <Button
             type="button"
             onClick={showModal}
