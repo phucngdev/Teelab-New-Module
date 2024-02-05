@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet";
 import ProductsList from "../../../components/admin/ProductsList";
 import ModalProduct from "../../../components/admin/ModalProduct";
 
-const { Search } = Input;
 const ProductsAdmin = () => {
   const [search, setSearch] = useState("");
   const items = [
@@ -39,6 +38,7 @@ const ProductsAdmin = () => {
           <div className="flex items-center gap-3">
             <h3 className=" text-2xl whitespace-nowrap">Danh sách sản phẩm</h3>
             <input
+              className="border w-[300px] px-2 py-1 text-sm rounded-lg"
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}

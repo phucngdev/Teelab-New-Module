@@ -1311,27 +1311,41 @@
       "createTime": "19:34:31 1/2/2024"
     },
     {
-      "id": "TL569730",
-      "name": "test",
-      "email": "1",
-      "phone": "1",
-      "address": "1",
+      "id": "TL302982",
+      "name": "emi",
+      "email": "fukuda@gmail.com",
+      "phone": "78787878",
+      "address": "japan",
       "city": "Thành phố Hà Nội",
-      "district": "Quận Ba Đình",
-      "ward": "Phường Vĩnh Phúc",
-      "note": "",
+      "district": "Quận Hoàn Kiếm",
+      "ward": "Phường Hàng Mã",
+      "note": "emi fukuda abc ",
       "cart": [
         {
-          "id": 5,
-          "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/1-26653769-bf15-498a-bfec-cfe0f350a14c.jpg?v=1692025569233",
-          "name": "Áo Thun Teelab Local Brand Unisex Love Is In The Air TS199",
-          "price": "199.000đ",
-          "num": 1
+          "id": 3,
+          "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/te9180-64ffkovk-1-yrw5-hinh-mat-truoc-0.jpg?v=1692005106000",
+          "name": "Áo Babytee Local Brand Teelab Studio Baby Sheep Cute BT013",
+          "price": "135.000đ",
+          "num": 10
+        },
+        {
+          "id": 2,
+          "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/ts209.jpg?v=1695720506783",
+          "name": "Áo Thun Teelab Local Brand Unisex The True Chill Isn’t In The Smoke TS209",
+          "price": "185.000đ",
+          "num": 10
+        },
+        {
+          "id": 4,
+          "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/1-c3eb1db4-6cc5-4f09-820d-cdad25250a17.jpg?v=1697683787577",
+          "name": "Áo Thun Teelab Local Brand Unisex Sporty Line Shoulder TS202",
+          "price": "185.000đ",
+          "num": 10
         }
       ],
-      "price": 219000,
-      "status": 1,
-      "createTime": "19:38:12 1/2/2024"
+      "price": 5070000,
+      "status": 3,
+      "createTime": "16:01:26 5/2/2024"
     }
   ],
   "account": [
@@ -1413,6 +1427,19 @@
       "position": "diễn viên ú ớ",
       "branch": "Nhật bản",
       "img": "https://firebasestorage.googleapis.com/v0/b/teelab-fab2c.appspot.com/o/admin%2Femi2.webp?alt=media&token=bf744cbb-8976-4055-8d22-65fc8986e2c5"
+    },
+    {
+      "id": "TL370404",
+      "img": "https://firebasestorage.googleapis.com/v0/b/teelab-fab2c.appspot.com/o/admin%2Ff-14.jpg?alt=media&token=05edec1b-da13-420d-bb18-09ff81269565",
+      "username": "emi3",
+      "password": "1",
+      "name": "emi fukuda",
+      "email": "emifukuda@gmail.com",
+      "phone": "7878787878",
+      "date": "11/11/1111",
+      "address": "japan",
+      "position": "diễn viên abc",
+      "branch": "japan"
     }
   ]
 }
