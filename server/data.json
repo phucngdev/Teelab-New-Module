@@ -1346,6 +1346,43 @@
       "price": 5070000,
       "status": 3,
       "createTime": "16:01:26 5/2/2024"
+    },
+    {
+      "id": "TL427001",
+      "name": "con cu",
+      "email": "cu@gmail.com",
+      "phone": "7979797979",
+      "address": "trên cây",
+      "city": "Thành phố Hà Nội",
+      "district": "Quận Tây Hồ",
+      "ward": "Phường Tứ Liên",
+      "note": "cây cam",
+      "cart": [
+        {
+          "id": 1,
+          "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/untitled-1-3b2d9877-716d-4d3d-8144-1452dee158f1.jpg?v=1693562410037",
+          "name": "Áo Thun Teelab Local Brand Unisex Percy Sport T-Shirt TS194",
+          "price": "199.000đ",
+          "num": 6
+        },
+        {
+          "id": 2,
+          "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/ts209.jpg?v=1695720506783",
+          "name": "Áo Thun Teelab Local Brand Unisex The True Chill Isn’t In The Smoke TS209",
+          "price": "185.000đ",
+          "num": 7
+        },
+        {
+          "id": 3,
+          "img": "https://bizweb.dktcdn.net/thumb/large/100/415/697/products/te9180-64ffkovk-1-yrw5-hinh-mat-truoc-0.jpg?v=1692005106000",
+          "name": "Áo Babytee Local Brand Teelab Studio Baby Sheep Cute BT013",
+          "price": "135.000đ",
+          "num": 8
+        }
+      ],
+      "price": 3589000,
+      "status": 0,
+      "createTime": "20:22:07 6/2/2024"
     }
   ],
   "account": [
@@ -1440,6 +1477,19 @@
       "address": "japan",
       "position": "diễn viên abc",
       "branch": "japan"
+    },
+    {
+      "id": "TL147479",
+      "username": "abc123",
+      "password": "1",
+      "name": "abc",
+      "email": "acb@gamil.com",
+      "phone": "123",
+      "date": "12/12/1212",
+      "address": "abc abc abc",
+      "position": "abc abc",
+      "branch": "abc abca",
+      "img": "https://firebasestorage.googleapis.com/v0/b/teelab-fab2c.appspot.com/o/admin%2Ff-14.jpg?alt=media&token=dac8a1d3-5340-4af3-9193-cd05e16c4131"
     }
   ]
 }

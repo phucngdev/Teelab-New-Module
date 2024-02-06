@@ -19,9 +19,7 @@ const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
 async function upload(file) {
-  console.log(file);
   const fileObj = file.files[0];
-  console.log(fileObj);
   let fileUrl = "";
   if (fileObj) {
     const storageRef = ref(storage, `admin/${fileObj.name}`);

@@ -13,7 +13,6 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Pay from "./pages/user/page/Pay.jsx";
 import Cart from "./pages/user/page/Cart.jsx";
-import ProductsAdmin from "./pages/private/page/products.jsx";
 import Check from "./pages/user/page/Check.jsx";
 import NotFound from "./pages/user/page/NotFound.jsx";
 import Login from "./pages/private/page/Login.jsx";
@@ -23,6 +22,7 @@ import Public from "./routes/Public.jsx";
 import Private from "./routes/Private";
 import NotFoundAdmin from "./pages/private/page/NotFound";
 import Order from "./pages/private/page/Order.jsx";
+import ProductsAdmin from "./pages/private/page/Products.jsx";
 
 function App() {
   const location = useLocation();
